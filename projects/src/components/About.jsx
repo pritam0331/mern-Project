@@ -3,7 +3,7 @@ import './About.css'
 function About() {
   return (
     <div>
-    <h1>Why choose Rakt Daan</h1>
+    <h1>Why choose Rakt Daan gfgfg</h1>
   </div>
   )
 }
