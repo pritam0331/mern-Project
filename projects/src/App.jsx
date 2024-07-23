@@ -8,6 +8,7 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import SignupSignin from './components/SignupSignin'
+import Footer from './components/Footer'
 
 function App() {
  return (
@@ -22,7 +23,7 @@ function App() {
       <Route path="/signup-signin" element={<SignupSignin/>}></Route>
     </Routes>
     </BrowserRouter>
-    ?
+    <Footer/>
   </>
  )
 }

@@ -1,111 +1,18 @@
 
 
 .footer{
-    background-color:#0f172a;
-    color: #cbd5e1;
+    background-color:#4c515a;
+    color: #dae3ee;
     text-align: center;
+    position: sticky;
+    top: 100px;
 }
 
-.footer-main{
-
-display: flex;
-flex-direction: column;
+.footer-end p{
+/* font-size: 100px; */
 align-items: center;
-margin-bottom: 20px;
-
-
-
-}
-
-.footer-info{
-
-display: flex;
-justify-content: space-around;
-
-margin-bottom: 20px;
-
-
-    
-}
-.footer-logo{
-    position: relative;
-     right: 700px;
-     top: 20px;
-    
-}
-
-.footer-logo img{
-    height: 50px;
-    width: 50px;
-}
-
-.footer-info div{
-    margin: 10px 50px;
-}
-
-.footer-info h4{
-    margin-bottom: 10px;
-}
-
-
-.footer-info ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-info ul li {
-    margin: 20px 0;
-    
-}
-
-.footer-info ul li a {
-    color: #ffffff;
-    text-decoration: none;
-   
-}
-a{
-    text-decoration: none;
-    color: #cbd5e1;
-}
-.footer-mid{
-display: flex;
-justify-content: space-between;
-height: 100px;
-align-items: center;
-
-}
-
-.footer-mid h4{
-    margin-left: 5px;
-    position: relative;
-    right: 81px;
-}
-.footer-mid p{
-    margin-left: 20px;
-}
-.footer-form input {
-    padding: 5px;
-    margin-right: 10px;
-    border: 1px solid #444;
-    border-radius: 10px;
-    outline: none;
-    color: #000;
-    text-align: center;
-}
-
-.footer-form button {
-    padding: 5px;
-    margin-right: 20px;
-    border: 1px solid #444;
-    border-radius: 10px;
-    outline: none;
-    color: #000;
-
-}
-
-.footer-end{
-display: flex;
-align-items: center;
+text-align: center;
+padding-top: 20px;
 margin-left: 20px;
 height: 60px;
 }
