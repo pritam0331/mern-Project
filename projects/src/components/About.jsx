@@ -1,10 +1,10 @@
 import React from 'react'
-
+import './About.css'
 function About() {
   return (
     <div>
-        <h1 className='text-center'>This is About Section</h1>
-    </div>
+    <h1>Why choose Rakt Daan</h1>
+  </div>
   )
 }
 
