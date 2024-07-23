@@ -1,6 +1,7 @@
 import React from 'react';
 import './Contact.css';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import Button from 'react-bootstrap/Button';
 
 function Contact() {
   return (
@@ -41,7 +42,7 @@ function Contact() {
             <label>Message</label>
             <textarea name="message"></textarea>
           </div>
-          <button type="submit">Send message</button>
+          <Button type="submit" variant="outline-danger">Send message</Button>
         </form>
       </div>
     </div>

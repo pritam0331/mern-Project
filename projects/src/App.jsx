@@ -8,6 +8,7 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import SignupSignin from './components/SignupSignin'
+import Signin from './components/Signin'
 // import Footer from './components/Footer'
 
 function App() {
@@ -20,10 +21,10 @@ function App() {
       <Route path="/about" element={<About/>}></Route>
       <Route path="/bookanbus" element={<BookAnBus/>}></Route>
       <Route path="/contact" element={<Contact/>}></Route>
-      <Route path="/signup-signin" element={<SignupSignin/>}></Route>
+      <Route path="/signup" element={<SignupSignin/>}></Route>
+      <Route path="/signin" element={<Signin/>}></Route>
     </Routes>
     </BrowserRouter>
-    {/* <Footer/> */}
   </>
  )
 }
