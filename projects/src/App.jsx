@@ -7,7 +7,7 @@ import Contact from './components/Contact'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Footer from './components/Footer'
+import SignupSignin from './components/SignupSignin'
 
 function App() {
  return (
@@ -19,9 +19,10 @@ function App() {
       <Route path="/about" element={<About/>}></Route>
       <Route path="/bookanbus" element={<BookAnBus/>}></Route>
       <Route path="/contact" element={<Contact/>}></Route>
+      <Route path="/signup-signin" element={<SignupSignin/>}></Route>
     </Routes>
     </BrowserRouter>
-    <Footer/>
+    ?
   </>
  )
 }
