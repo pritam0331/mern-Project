@@ -42,7 +42,9 @@ function Contact() {
             <label>Message</label>
             <textarea name="message"></textarea>
           </div>
+          <div className='form-group'>
           <Button type="submit" variant="outline-danger">Send message</Button>
+          </div>
         </form>
       </div>
     </div>

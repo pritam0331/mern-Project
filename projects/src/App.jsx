@@ -9,7 +9,7 @@ import Navbar from './components/Navbar'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import SignupSignin from './components/SignupSignin'
 import Signin from './components/Signin'
-import FAQ from './components/FAQ'
+// import FAQ from './components/FAQ'
 // import Footer from './components/Footer'
 
 function App() {
@@ -26,7 +26,6 @@ function App() {
       <Route path="/signin" element={<Signin/>}></Route>
     </Routes>
     </BrowserRouter>
-    <FAQ/>
   </>
  )
 }

@@ -1,14 +1,19 @@
-.contact-info-background {
-    background-color: #f5f5f5;
+/* .contact-info-background {
+    background-color: #d13232;
     width: 50%;
     padding: 20px;
-  }
+  } */
   
   .contact-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      background-color: #e75555;
       padding: 20px;
+    }
+
+    .contact-info{
+      color: white;
     }
     
     .contact-info,
@@ -16,7 +21,11 @@
       width: 100%;
       margin-bottom: 20px;
     }
-    
+    .contact-form{
+      background-color: white;
+      border: 10px solid #e75555;
+      border-radius: 20px;
+    }
     .contact-info h2 {
       font-size: 24px;
     }
@@ -27,7 +36,7 @@
     }
     
     .contact-info address {
-      margin-top: 20px;
+      margin-top: 10px;
       font-style: normal;
     }
     
@@ -54,6 +63,7 @@
     .form-group {
       margin-bottom: 15px;
       width: 100%;
+      padding: 10px;
     }
     
     .form-row .form-group {
@@ -78,16 +88,16 @@
       height: 100px;
     }
     
-    button {
+    /* button {
       padding: 10px 20px;
       font-size: 16px;
       color: white;
-      background-color: #6200ee;
+      background-color: red;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       align-self: flex-start;
-    }
+    } */
     
     /* Media Queries for responsiveness */
     @media (min-width: 768px) {

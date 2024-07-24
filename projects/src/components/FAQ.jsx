@@ -5,7 +5,7 @@ function FAQ () {
   const [activeIndex, setActiveIndex] = useState(null);
 
   function handleToggle (index) {
-    if (activeIndex && index) {
+    if (activeIndex === index) {
       setActiveIndex(null);
     } else {
       setActiveIndex(index);
@@ -14,36 +14,44 @@ function FAQ () {
 
   const faqs = [
     {
-      question: "How does the blood donation process work?",
-      answer: "The blood donation process involves registration, a health screening, the actual donation, and a short recovery period."
+       question: "Who is eligible to donate blood?",
+      answer: "Individuals who are generally healthy, weigh at least 110 pounds, and are at least 16 or 17 years old (depending on state laws) are typically eligible to donate blood. Specific eligibility criteria may vary, so it's best to check with the local blood donation center."
     },
     {
-      question: "How much blood can you donate at once?",
-      answer: "You can donate (about 470 ml) of blood at a time."
+      question: "How often can I donate blood?",
+      answer: "Whole blood can be donated every 56 days. Plasma and platelet donation frequency may vary, with plasma donations possible every 28 days and platelet donations every 7 days, up to 24 times a year."
     },
     {
-      question: "Donated blood is used for?",
-      answer: "Donated blood is used for transfusions during surgeries, trauma care, cancer treatment, and for people with chronic illnesses."
+      question: "What should I do to prepare for a blood donation?",
+      answer: "Drink plenty of water, eat a healthy meal before donating, and avoid fatty foods. Ensure you bring a valid ID and any required paperwork."
     },
     {
-      question: "Is giving blood good for you?",
-      answer: "Yes, giving blood can be beneficial as it can reduce harmful iron stores, improve cardiovascular health, and allow for a free health screening."
+      question: "Is donating blood safe?",
+      answer: "Yes, donating blood is safe. Blood donation centers use sterile, single-use needles and equipment to ensure the donor's safety."
     },
     {
-      question: "What types of tests are performed on donated blood?",
-      answer: "Donated blood is tested for blood type, Rh factor, and screened for infectious diseases such as HIV, hepatitis B and C, and syphilis."
+      question: "How long does the blood donation process take?",
+      answer: "The entire process, including registration, a brief medical check-up, the donation itself, and a short rest period, usually takes about an hour. The actual blood draw typically takes 10-15 minutes."
     },
     {
-      question:"How long will it take to replenish the blood I donate?",
-      answer: "It takes about 24-48 hours to replace the plasma and about 4-6 weeks to replace the red blood cells."
+      question:"What happens to my blood after donation?",
+      answer: "After donation, the blood is tested, processed, and stored. It is then distributed to hospitals and clinics to help patients in need."
     },
     {
-      question: "What should I do/not do after donating blood?",
-      answer: "After donating blood, you should rest, stay hydrated, avoid heavy lifting and strenuous exercise for at least 24 hours."
+      question: "Can I donate blood if I have a medical condition?",
+      answer: "Some medical conditions may affect eligibility to donate blood. It's best to consult with the blood donation center or a healthcare provider to determine if you are eligible.."
     },
     {
-      question: "Who cannot donate blood?",
-      answer: "People with certain health conditions, recent tattoos or piercings, certain medications, or risky behaviors may not be eligible to donate blood."
+      question: "Will donating blood affect my health or performance?",
+      answer: "Donating blood is generally safe and has minimal impact on health. Most donors feel fine after a short rest and can resume normal activities. It's advisable to avoid heavy exercise or strenuous activities for 24 hours after donation."
+    },
+    {
+      question: "Can I donate blood if I have traveled recently?",
+      answer: "Recent travel to certain areas may temporarily affect eligibility due to the risk of infectious diseases. Check with the blood donation center for specific travel-related restrictions."
+    },
+    {
+      question: "How can I find a blood donation center near me?",
+      answer: "You can use the website's locator tool, enter your zip code, or contact your local hospital or blood bank to find the nearest donation center."
     }
   ];
 
