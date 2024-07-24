@@ -5,7 +5,7 @@ import './SignupSignin.css';
 function SignupSignin() {
   return (
     <div className="signup-signin-container">
-      <form action="">
+      <form action="" className='signup-form'>
         <h1>Create Account</h1>
         <button className="google-button">
           <FaGoogle /> Signup with Google

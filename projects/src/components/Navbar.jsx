@@ -32,8 +32,7 @@ function OffcanvasExample() {
                   <Nav.Link href="/about" className='text-dark nav-item-spacing'>About</Nav.Link>
                   <Nav.Link href="/contact" className='text-dark nav-item-spacing'>Contact Us</Nav.Link>
                 </Nav>
-                <Nav.Link href='/signup'><Button variant="outline-danger">Signup</Button></Nav.Link>
-                <Nav.Link href='/signin'><Button variant="outline-danger">Signin</Button></Nav.Link>
+                <Nav.Link href='/signup'><Button variant="outline-danger">Signup/Signin</Button></Nav.Link>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>

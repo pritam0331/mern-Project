@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-form {
+.signin-form {
 	width: 800px;
 	padding: 2rem;
 	background: #fff;
@@ -109,7 +109,7 @@ h1 {
 }
 
 @media (max-width: 480px) {
-  form {
+  .signin-form  {
     padding: 1.5rem;
   }
 

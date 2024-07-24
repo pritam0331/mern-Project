@@ -5,7 +5,7 @@ import './Signin.css';
 function Signin() {
   return (
     <div className="signin-container">
-      <form>
+      <form className='signin-form'>
         <h1>Sign In</h1>
         
         <button type="button" className="google-button">
