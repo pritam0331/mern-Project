@@ -1,7 +1,7 @@
 .faq-section {
   text-align: center;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-image: url('./faq_bg.jpg');
   border-radius: 10px;
   max-width: auto;
   margin: auto;
@@ -10,6 +10,7 @@
 
 .faq-section h2 {
   font-size: 35px;
+  font-weight: bolder;
   margin-bottom: 10px;
   text-decoration: underline;
   text-decoration-color: red;
@@ -17,6 +18,7 @@
 
 .faq-section p {
   font-size: 16px;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
@@ -30,6 +32,7 @@
 .faq-item {
   margin: 10px;
   padding: 15px;
+  background-color:white;
   border: 1px solid #ddd;
   border-radius: 5px;
   cursor: pointer;

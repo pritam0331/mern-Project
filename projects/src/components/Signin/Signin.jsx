@@ -3,7 +3,7 @@ import { FaGoogle } from 'react-icons/fa';
 import './Signin.css';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-import './SignupSignin.css';
+import './Signin.css';
 
 function Signin() {
   const [user, setUser] = useState(null);

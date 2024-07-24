@@ -1,5 +1,5 @@
 import React from 'react'
-import FAQ from './FAQ'
+import FAQ from '../FAQ/FAQ.jsx'
 
 function Home() {
   return (

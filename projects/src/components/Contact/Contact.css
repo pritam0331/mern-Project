@@ -88,7 +88,7 @@
       height: 100px;
     }
     
-    /* button {
+    button {
       padding: 10px 20px;
       font-size: 16px;
       color: white;
@@ -97,7 +97,7 @@
       border-radius: 4px;
       cursor: pointer;
       align-self: flex-start;
-    } */
+    }
     
     /* Media Queries for responsiveness */
     @media (min-width: 768px) {
