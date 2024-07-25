@@ -31,8 +31,8 @@ nav a span{
 }
 
 .signup-button {
-  background-color: red;
   border: none;
+  background-color: red !important;
   padding: 10px 20px;
   cursor: pointer;
 }
