@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import GoogleButton from 'react-google-button';
 import './SignupSignin.css';
 
 function SignupSignin() {
@@ -44,9 +45,7 @@ function SignupSignin() {
     <div className="signup-signin-container">
       <form onSubmit={handleSubmit} className='signup-form'>
         <h1>Create Account</h1>
-        <button type="button" onClick={() => login()} className="google-button">
-          <FaGoogle /> Signup with Google
-        </button>
+        <div id='btn1'> <GoogleButton type='button' onClick={() => login()}/></div>
         <span className='span'>or use your email for registration</span>
         <input type="text" name="name" placeholder="Name" className="input-field" />
         <input type="email" name="email" placeholder="Email" className="input-field" />

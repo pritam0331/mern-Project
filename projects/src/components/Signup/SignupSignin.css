@@ -22,7 +22,7 @@
 	text-align: center;
   }
   
-  .google-button {
+  .btn1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -35,10 +35,6 @@
 	transition: background 0.3s;
 	margin-bottom: 1.5rem;
 	width: 100%;
-  }
-  
-  .google-button svg {
-	margin-right: 0.5rem;
   }
   
   .google-button:hover {

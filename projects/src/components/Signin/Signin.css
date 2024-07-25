@@ -22,13 +22,11 @@ h1 {
   text-align: center;
 }
 
-.google-button {
+#btn1 {
   display: flex;
   align-items: center;
+  color: #333;
   justify-content: center;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   padding: 0.75rem;
   font-size: 1rem;
   cursor: pointer;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaGoogle } from 'react-icons/fa';
-import './Signin.css';
+// import { FaGoogle } from 'react-icons/fa';
+import GoogleButton from 'react-google-button'
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import './Signin.css';
@@ -45,9 +45,8 @@ function Signin() {
       <form className='signin-form'>
         <h1>Sign In</h1>
         
-        <button type="button" className="google-button" onClick={() => login()}>
-          <FaGoogle /> Signin with Google
-        </button>
+       <div id='btn1'> <GoogleButton type='button' onClick={() => login()}/></div>
+
         
         <span className='span'>or use your account</span>
         

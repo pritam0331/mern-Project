@@ -10,14 +10,15 @@ class Navbar extends Component {
   return (
     <>
       <nav>
-        <a href="/home">Rakt<span>Daan</span></a>
+        <a href="/">Rakt<span>Daan</span></a>
         <div>
           <ul id="navbar" className={this.state.clicked ?'#navbar active':'#navbar'}>
-            <li><a href="/home" className='active'>Home</a></li>
+            <li><a href="/" className='active'>Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/signup">Signup</a></li>
-            <li><a href="/signin">Signin</a></li>
+            {/* <li><a href="/signup">Signup</a></li> */}
+            {/* <li><a href="/signin">Signin</a></li> */}
+            <button className='signup-button'><a href="/signup">Signup/Signin</a></button>
           </ul>
           {/* <button className='signup-button'><a href="/signup">Signup/Signin</a></button> */}
         </div>

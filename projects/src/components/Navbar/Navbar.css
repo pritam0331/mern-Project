@@ -30,7 +30,7 @@ nav a span{
   position: relative;
 }
 
-/* .signup-button {
+.signup-button {
   background-color: red;
   border: none;
   padding: 10px 20px;
@@ -41,7 +41,7 @@ nav a span{
   color: white;
   text-decoration: none;
   font-weight: bold;
-} */
+}
 
 #navbar li a{
   text-decoration: none;
@@ -88,6 +88,7 @@ nav a span{
     box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
     padding: 40px 0 0 10px;
     transition: 0.3s ease-in-out;
+    margin-top: -22px;
   }
   #navbar.active{
     right: 0px;
