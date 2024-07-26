@@ -1,6 +1,7 @@
 import React from 'react'
 import FAQ from '../FAQ/FAQ.jsx'
 import About1 from '../About/About1.jsx'
+import img from '../About/image3.png'
 import './Home.css'
 
 function Home() {
@@ -8,7 +9,7 @@ function Home() {
     <div>
         <div className="profile-card">
         <div className="profile-image">
-          <img src="https://www.e7health.com/files/blogs/fotosearch-k2519628-60.jpg" alt="Profile" />
+          <img src={img} alt="Profile" />
         </div>
         <div className="profile-content">
           <p>

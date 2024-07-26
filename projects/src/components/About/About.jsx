@@ -1,12 +1,15 @@
 import React from 'react';
 import './About.css'
+import img from './image1.png'
+import img1 from './image2.png'
+import img2 from './image3.png'
 
 const About = () => {
   return (
     <>
       <div className="profile-card">
         <div className="profile-image">
-          <img src="https://www.e7health.com/files/blogs/fotosearch-k2519628-60.jpg" alt="Profile" />
+          <img src={img} alt="Profile" />
         </div>
         <div className="profile-content">
           <h2 className='text'>1. The Importance of Blood Donation</h2>
@@ -35,12 +38,12 @@ const About = () => {
           </p>
         </div>
         <div className="profile-image">
-          <img src="https://cdn-prod.medicalnewstoday.com/content/images/articles/320/320679/a-doctor-holding-a-blood-sample.jpg" alt="Profile" />
+          <img src={img1} />
         </div>
       </div>
       <div className="profile-card">
         <div className="profile-image">
-          <img src="https://cdn-prod.medicalnewstoday.com/content/images/articles/320/320679/a-doctor-holding-a-blood-sample.jpg" alt="Profile" />
+          <img src={img2}/>
         </div>
         <div className="profile-content">
         <h2 className='text'>3. Benefits of Donating Blood</h2>
@@ -72,7 +75,7 @@ const About = () => {
           </p>
         </div>
         <div className="profile-image">
-          <img src="https://www.e7health.com/files/blogs/fotosearch-k2519628-60.jpg" alt="Profile" />
+          <img src={img}/>
         </div>
       </div>
     </>
