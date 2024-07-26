@@ -1,19 +1,36 @@
 import React from "react";
-import "./Footer.css"; 
-// import img1 from "./images/download.jpeg";
-//
+import './Footer.css';
+import { FaFacebook,FaTwitter,FaInstagram,FaWhatsapp } from "react-icons/fa";
 
-const Footer = () => {
+function Footer() {
   return (
-   
-
-    <footer className="footer">
-        <div className="footer-end">
-        <p>&copy; 2020 Your Company, Inc. All rights reserved.</p>
+  <footer>
+    <div className="row1">
+      <div className="head">
+        <p>Rakht Daan</p>
+        {/* <img src="" alt="logo" />     */}
+      </div>
+      <div className="socials">
+        <FaFacebook/>
+        <FaInstagram/>
+        <FaWhatsapp/>
+        <FaTwitter/>
+      </div>
+      </div>
+      <hr className="hr1"/>
+      <div className="foot">
+        <div className="content">
+          <p>&copy; Rakht daan 2024 , we love our users</p>
         </div>
-      
-    </footer>
-  );
-};
+        <div className="policy">
+          <a href="/privacy-policies">Privacy & Policies</a>
+          <a href="/terms-conditions">Terms & Conditions</a>
+          <a href="/about-us">About Us</a>
+          <a href="/contact-us">Contact Us</a>
+        </div>
+      </div>
+      </footer>
+  )
+}
 
 export default Footer;

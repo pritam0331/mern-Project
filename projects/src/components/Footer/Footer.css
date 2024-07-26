@@ -1,118 +1,136 @@
+footer {
+    background-color: rgb(54, 52, 52);
+    color: white;
+   text-align: center;
+   height: 20vh;
+    padding: 10px;
+   
+}
 
+.row1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
 
-.footer{
-    background-color:#4c515a;
-    color: #dae3ee;
+.head {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.head p {
+    font-size: 20px;
+    margin-left: 75px;
+    color: white;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 20px;
+    font-size: 25px;
+    margin-right: 75px;
+}
+
+.foot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.content {
     text-align: center;
-    position: sticky;
-    top: 100px;
+    margin-top: 5px;
+}
+.content p{
+   margin-left: 75px;
 }
 
-.footer-end p{
-/* font-size: 100px; */
-align-items: center;
-text-align: center;
-padding-top: 20px;
-margin-left: 20px;
-height: 60px;
+.policy {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-right: 50px;
 }
 
-/* hr{
-
- 
-} */
-/* @media (max-width: 1200px) {
-    .footer-logo {
-        right: 0;
-        top: 0;
-        margin-bottom: 20px;
-    }
-
-    .footer-info {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-info div {
-        margin: 10px 0;
-    }
+.policy a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
 }
 
-@media (max-width: 768px) {
-    .footer-mid {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-mid h4 {
-        right: 0;
-    }
+hr {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid white;
 }
 
-@media (max-width: 480px) {
-    .footer-form input,
-    .footer-form button {
-        margin: 5px 0;
-        width: 100%;
-        height: 100%;
-        
+
+@media (min-width: 768px) {
+    footer {
+        padding: 20px 40px; 
     }
 
-    .footer-end {
-        flex-direction: column;
-    }
-
-    .footer-end p {
-        margin-bottom: 10px;
-    }
-} */
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-    .footer-main {
-        flex-direction: column;
-    }
-    .footer-info {
+    .row1 {
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
-    .footer-logo {
-        right: 150px;
+
+    .head {
+        justify-content: flex-start;
+        margin-top: 0;
     }
-    .footer-mid {
-        height: 100px;
+
+    .socials {
+        justify-content: flex-end;
+        margin-top: 0; 
     }
-    .footer-mid h4 {
-        right: 20px;
+
+    .foot {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center; 
+        margin-top: 0; 
+    }
+
+    .content {
+        text-align: left;
+    }
+
+    .policy {
+        justify-content: flex-end;
+        margin-top: 0; 
+    }
+
+    hr {
+        margin: 10px 5%; 
     }
 }
 
-/* Small screens (mobiles) */
-@media only screen and (max-width: 767px) {
-    .footer-main {
-        flex-direction: column;
+@media (max-width: 767px) {
+    .policy{
+        margin: auto;
+        margin-top: 10px
     }
-    .footer-info {
-        flex-direction: column;
-        align-items: center;
+    .policy a {
+        margin-right: 10px; 
     }
-    .footer-logo {
-        right: 0;
-        top: 0;
+    .head p{
+       margin: auto;
+       margin-bottom: 10px;
     }
-    .footer-mid {
-        height: 50px;
-        flex-direction: column;
-        align-items: center;
+    .socials{
+        margin: auto;
     }
-    .footer-mid h4 {
-        margin-left: 0;
-        right: 0;
-    }
-    .footer-form input, .footer-form button {
-        width: 100%;
-        margin: 10px 0;
-
-    }
-    .footer-end{
-        width: 100%;
+    .content p{
+      
+        margin-left: 10px;
     }
 }
