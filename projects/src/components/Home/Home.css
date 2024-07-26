@@ -1,10 +1,11 @@
-  .profile-card {
+.profile-card {
     display: flex;
     background-color: white;
     color: black;
     padding: 20px;
     border-radius: 10px;
     align-items: stretch;
+    margin-bottom: 20px;
   }
   
   .profile-image {
@@ -31,18 +32,9 @@
     justify-content: center;
   }
   
-  .profile-content{
+  .profile-content .title {
     margin-top: 0;
     margin-bottom: 15px;
-    font-size: 24px;
-    color: #333;
-  }
-
-  .text {
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: red !important;
-    text-align: center;
     font-size: 24px;
     color: #333;
   }
@@ -51,6 +43,20 @@
     font-size: 16px;
     margin: 0;
     line-height: 1.6;
+  }
+
+  #btn{
+    margin: 15px 0 0 10px;
+    border-radius: 10px;
+  }
+
+  #btn a{
+    text-decoration: none;
+    color: white;
+  }
+
+  #btn:hover{
+    box-shadow: 0 5px 15px red;
   }
   
   @media (max-width: 768px) {
@@ -66,13 +72,11 @@
     
     .profile-image {
       height: 300px; /* Set a fixed height for mobile view */
-      order: 2; /* This makes the image appear after the content */
+      order: -1; /* This makes the image appear first */
     }
     
     .profile-content {
       padding-left: 0;
       padding-top: 20px;
-      order: 1; /* This makes the content appear first */
     }
   }
-  

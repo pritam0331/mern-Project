@@ -30,14 +30,15 @@ nav a span{
   position: relative;
 }
 
-.signup-button {
-  background-color: red;
+.sign-button {
   border: none;
-  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: red !important;
+  padding: 5px 5px;
   cursor: pointer;
 }
 
-.signup-button a {
+.sign-button a {
   color: white;
   text-decoration: none;
   font-weight: bold;
