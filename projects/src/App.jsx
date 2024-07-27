@@ -9,6 +9,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import SignupSignin from './components/Signup/SignupSignin'
 import Signin from './components/Signin/Signin'
 import Footer from './components/Footer/Footer'
+// import TermsAndCond from './components/Termsandcondition/Termsandcond'
 // import FAQ from './components/FAQ'
 // import Footer from './components/Footer'
 
@@ -25,6 +26,7 @@ function App() {
       <Route path="/signin" element={<Signin/>}></Route>
     </Routes>
     </BrowserRouter>
+    {/* <TermsAndCond/> */}
     <Footer/>
   </>
  )

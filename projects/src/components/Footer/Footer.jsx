@@ -7,7 +7,7 @@ function Footer() {
     <footer>
       <div className="row1">
         <div className="head">
-          <p>Rakt <span className="span"> Daan</span></p>
+          <p>Rakt <span className="span1"> Daan</span></p>
 
         </div>
         <div className="socials">
@@ -20,7 +20,7 @@ function Footer() {
       <hr className="hr1" />
       <div className="foot">
         <div className="content">
-          <p>&copy; Rakht daan 2024 , we love our users</p>
+          <p>&copy; Rakt <span className="span2">Daan</span> 2024 , we love our users</p>
         </div>
         <div className="policy">
           <a href="/privacy-policies">Privacy & Policies</a>
