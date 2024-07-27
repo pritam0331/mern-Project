@@ -7,8 +7,8 @@ function Footer() {
   <footer>
     <div className="row1">
       <div className="head">
-        <p>Rakht Daan</p>
-        {/* <img src="" alt="logo" />     */}
+        <p>Rakt <span className="span"> Daan</span></p>
+     
       </div>
       <div className="socials">
         <FaFacebook/>
