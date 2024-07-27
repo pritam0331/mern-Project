@@ -1,48 +1,59 @@
 import React from 'react';
-import './TermsAndCond.css';
+import './Termsandcond.css';
 
-const TermsAndCond = () => {
+const Termsandcond = () => {
   return (
-    <div className="terms-container">
-      <h1>Terms and Conditions</h1>
-      <p>Welcome to RaktDaan! These terms and conditions outline the rules and regulations for the use of our website.</p>
+    <div className="termsandcond-container">
+      <h1>Terms and Conditions</h1><br></br>
+      <p>Welcome to RaktDaan! Please read these terms and conditions carefully before using our website.</p>
 
-      <h2>1. General Information</h2>
-      <p>
-        By accessing this website, you agree to be bound by these terms and conditions. Do not continue to use RaktDaan if you do not accept all the terms and conditions stated on this page.
-      </p>
+      <div className="terms-section">
+        <h2>1. General Information</h2>
+        <p>By accessing this website, you agree to comply with these terms and conditions. If you do not agree, please do not use the site.</p><br></br>
+      </div>
 
-      <h2>2. Eligibility and Donor Requirements</h2>
-      <p>
-        Users must meet specific eligibility criteria to donate blood. These criteria include age, weight, and health conditions. RaktDaan reserves the right to refuse donations that do not meet these criteria.
-      </p>
+      <div className="terms-section">
+        <h2>2. Eligibility and Donor Requirements</h2>
+        <ul>
+          <li>Users must be at least 18 years old to donate blood.</li>
+          <li>Donors must weigh at least 50 kg.</li>
+          <li>Donors must not have any major medical conditions or diseases.</li>
+        </ul>
+      </div>
 
-      <h2>3. Privacy Policy</h2>
-      <p>
-        Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your personal information.
-      </p>
+      <div className="terms-section"><br></br>
+        <h2>3. Privacy Policy</h2>
+        <p>We are committed to protecting your privacy. Please refer to our Privacy Policy for information on how we handle your personal data.</p>
+      </div>
 
-      <h2>4. Use of Information</h2>
-      <p>
-        The information provided on this website is for general information purposes only. We make no representations or warranties of any kind, express or implied, about the completeness, accuracy, or reliability of the information.
-      </p>
+      <div className="terms-section"><br></br>
+        <h2>4. Use of Information</h2>
+        <ul>
+          <li>The information provided on RaktDaan is for general informational purposes only.</li>
+          <li>We do not guarantee the accuracy or completeness of the information provided.</li>
+          <li>Use of the website is at your own risk.</li>
+        </ul>
+      </div>
 
-      <h2>5. Liability Disclaimer</h2>
-      <p>
-        RaktDaan is not liable for any loss or damage arising from the use of our website or the information contained therein.
-      </p>
+      <div className="terms-section"><br></br>
+        <h2>5. Liability Disclaimer</h2>
+        <ul>
+          <li>RaktDaan is not liable for any damages arising from the use of this website.</li>
+          <li>We do not endorse any third-party services or information linked on the site.</li>
+        </ul>
+      </div>
 
-      <h2>6. Amendments</h2>
-      <p>
-        We may amend these terms and conditions at any time. It is your responsibility to review these terms regularly.
-      </p>
+      <div className="terms-section"><br></br>
+        <h2>6. Amendments</h2>
+        <p>We reserve the right to update these terms and conditions at any time. Please check this page regularly for updates.</p>
+      </div>
 
-      <h2>7. Contact Information</h2>
-      <p>
-        If you have any questions or concerns about these terms, please contact us at support@raktdaan.com.
-      </p>
+      <div className="terms-section"><br></br>
+        <h2>7. Contact Information</h2>
+        <p>If you have any questions or concerns, please contact us at <a href="mailto:support@raktdaan.com">support@raktdaan.com</a>.</p>
+      </div>
     </div>
   );
 };
 
-export default TermsAndCond;
+export default Termsandcond;
