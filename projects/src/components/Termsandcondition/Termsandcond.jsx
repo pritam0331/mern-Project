@@ -56,4 +56,7 @@ const Termsandcond = () => {
   );
 };
 
+
 export default Termsandcond;
+
+

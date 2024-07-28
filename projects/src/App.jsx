@@ -10,6 +10,7 @@ import SignupSignin from './components/Signup/SignupSignin'
 import Signin from './components/Signin/Signin'
 import Footer from './components/Footer/Footer'
 import TermsandCond from './components/Termsandcondition/Termsandcond'
+// import TermsAndCond from './components/Termsandcondition/Termsandcond'
 // import FAQ from './components/FAQ'
 // import Footer from './components/Footer'
 
