@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import './FAQ.css';
 
-function FAQ () {
+function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  function handleToggle (index) {
-    if (activeIndex === index) {
-      setActiveIndex(null);
-    } else {
-      setActiveIndex(index);
-    } 
+  const handleToggle = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   const faqs = [
     {
-       question: "Who is eligible to donate blood?",
+      question: "Who is eligible to donate blood?",
       answer: "Individuals who are generally healthy, weigh at least 110 pounds, and are at least 16 or 17 years old (depending on state laws) are typically eligible to donate blood. Specific eligibility criteria may vary, so it's best to check with the local blood donation center."
     },
     {
@@ -34,12 +30,12 @@ function FAQ () {
       answer: "The entire process, including registration, a brief medical check-up, the donation itself, and a short rest period, usually takes about an hour. The actual blood draw typically takes 10-15 minutes."
     },
     {
-      question:"What happens to my blood after donation?",
+      question: "What happens to my blood after donation?",
       answer: "After donation, the blood is tested, processed, and stored. It is then distributed to hospitals and clinics to help patients in need."
     },
     {
       question: "Can I donate blood if I have a medical condition?",
-      answer: "Some medical conditions may affect eligibility to donate blood. It's best to consult with the blood donation center or a healthcare provider to determine if you are eligible.."
+      answer: "Some medical conditions may affect eligibility to donate blood. It's best to consult with the blood donation center or a healthcare provider to determine if you are eligible."
     },
     {
       question: "Will donating blood affect my health or performance?",
@@ -76,6 +72,6 @@ function FAQ () {
       </div>
     </div>
   );
-};
+}
 
 export default FAQ;
