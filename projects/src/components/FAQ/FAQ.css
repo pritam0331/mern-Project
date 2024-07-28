@@ -5,6 +5,7 @@
   background-color: red;
   border-radius: 10px;
   max-width: auto;
+  height: auto;
   margin: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -74,6 +75,7 @@
 
   .faq-section {
     padding: 10px;
+    height: auto;
   }
 
   .faq-item {
@@ -93,6 +95,7 @@
 @media (max-width: 480px) {
   .faq-section {
     padding: 5px;
+    height: auto;
   }
 
   .faq-item {

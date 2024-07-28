@@ -1,6 +1,7 @@
 .profile-cards {
     display: flex;
     background-color: red;
+    height: 100vh;
     color: black;
     padding: 20px;
     border-radius: 10px;
@@ -58,6 +59,7 @@
   @media (max-width: 768px) {
     .profile-cards {
       flex-direction: column;
+      height: auto;
     }
     
     .profile-images,

@@ -10,6 +10,7 @@ import SignupSignin from './components/Signup/SignupSignin'
 import Signin from './components/Signin/Signin'
 import Footer from './components/Footer/Footer'
 import TermsandCond from './components/Termsandcondition/Termsandcond'
+// import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
 // import FAQ from './components/FAQ'
 // import Footer from './components/Footer'
@@ -25,9 +26,10 @@ function App() {
       <Route path="/contact" element={<Contact/>}></Route>
       <Route path="/signup" element={<SignupSignin/>}></Route>
       <Route path="/signin" element={<Signin/>}></Route>
+      <Route path="/termsandcondition" element={<TermsandCond/>}></Route>
     </Routes>
     </BrowserRouter>
-    <TermsandCond/>
+    {/* <TermsandCond/> */}
     <Footer/>
     </>
  )
