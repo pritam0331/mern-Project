@@ -46,35 +46,35 @@ function About1() {
           >
             <ul style={{ padding: 0, margin: 0 }}>
               <li style={{ marginBottom: 15 }}>
-                <a href="https://indianexpress.com/about/blood-donation-camp/">Blood Donation Camp News</a>
+                <a href="https://indianexpress.com/about/blood-donation-camp/" className='a'>Blood Donation Camp News</a>
               </li>
               <li style={{ marginBottom: 15 }}>
-                <a href="https://health.economictimes.indiatimes.com/news/industry/in-extreme-heat-ahmedabad-blood-banks-run-dry/110389598?utm_source=top_news&utm_medium=tagListing">
+                <a href="https://health.economictimes.indiatimes.com/news/industry/in-extreme-heat-ahmedabad-blood-banks-run-dry/110389598?utm_source=top_news&utm_medium=tagListing" className='a'>
                   In extreme heat, Ahmedabad blood banks run dry
                 </a>
               </li>
               <li style={{ marginBottom: 15 }}>
-                <a href="https://health.economictimes.indiatimes.com/news/industry/ways-to-address-indias-blood-donation-and-supply-crisis/101351499?utm_source=top_news&utm_medium=tagListing">
+                <a href="https://health.economictimes.indiatimes.com/news/industry/ways-to-address-indias-blood-donation-and-supply-crisis/101351499?utm_source=top_news&utm_medium=tagListing" className='a'>
                   Ways to address India's blood donation and supply crises
                 </a>
               </li>
               <li style={{ marginBottom: 15 }}>
-                <a href="https://health.economictimes.indiatimes.com/healthcare-leaders-summit?ag=events_listing&utm_source=events_listing&utm_medium=eventListing">
+                <a href="https://health.economictimes.indiatimes.com/healthcare-leaders-summit?ag=events_listing&utm_source=events_listing&utm_medium=eventListing" className='a'>
                   ET HealthCare Summit 2024
                 </a>
               </li>
               <li style={{ marginBottom: 15 }}>
-                <a href="https://www.thehindu.com/news/national/india-created-a-new-blood-donation-record-health-ministry/article65903863.ece">
+                <a href="https://www.thehindu.com/news/national/india-created-a-new-blood-donation-record-health-ministry/article65903863.ece" className='a'>
                   Over 87,000 people donated blood
                 </a>
               </li>
               <li style={{ marginBottom: 15 }}>
-                <a href="https://www.hindustantimes.com/cities/lucknow-news/people-in-india-not-donating-enough-blood-doctors-101696426808180.html">
+                <a href="https://www.hindustantimes.com/cities/lucknow-news/people-in-india-not-donating-enough-blood-doctors-101696426808180.html" className='a'>
                   People in India not donating enough blood: Doctors
                 </a>
               </li>
               <li style={{ marginBottom: 15 }}>
-                <a href="https://www.ndtv.com/topic/blood-donation">More Information</a>
+                <a href="https://www.ndtv.com/topic/blood-donation" className='a'>More Information</a>
               </li>
             </ul>
           </marquee>
