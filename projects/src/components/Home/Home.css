@@ -1,5 +1,6 @@
-.profile-cards {
+.profile-card {
     display: flex;
+    background-color: white;
     background-color: red;
     height: 100vh;
     color: black;
@@ -9,14 +10,14 @@
     margin-bottom: 20px;
   }
   
-  .profile-images {
+  .profile-image {
     flex: 1;
     width: 50%;
     max-width: 50%;
     overflow: hidden;
   }
   
-  .profile-images img {
+  .profile-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -24,7 +25,7 @@
     display: block;
   }
   
-  .profile-contents {
+  .profile-content {
     flex: 1;
     width: 50%;
     padding-left: 20px;
@@ -33,47 +34,51 @@
     justify-content: center;
   }
   
-  .profile-contents p {
+  .profile-content .title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .profile-content p {
     font-size: 16px;
-    color: white;
     margin: 0;
     line-height: 1.6;
   }
 
   #btn{
     margin: 15px 0 0 10px;
-    background-color: white;
     border-radius: 10px;
-    color: red;
   }
 
   #btn a{
     text-decoration: none;
-    color: red;
+    color: white;
   }
 
   #btn:hover{
-    box-shadow: 0 5px 15px white;
+    box-shadow: 0 5px 15px red;
   }
   
   @media (max-width: 768px) {
-    .profile-cards {
+    .profile-card {
       flex-direction: column;
       height: auto;
     }
     
-    .profile-images,
-    .profile-contents {
+    .profile-image,
+    .profile-content {
       width: 100%;
       max-width: 100%;
     }
     
-    .profile-images {
+    .profile-image {
       height: 300px; /* Set a fixed height for mobile view */
       order: -1; /* This makes the image appear first */
     }
     
-    .profile-contents {
+    .profile-content {
       padding-left: 0;
       padding-top: 20px;
     }

@@ -8,7 +8,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      background-color: #ff0e0e;
+      background-color: #e75555;
       padding: 20px;
     }
 
@@ -97,10 +97,6 @@
       border-radius: 4px;
       cursor: pointer;
       align-self: flex-start;
-    }
-
-    button:hover{
-      box-shadow: 0 5px 15px rgb(255, 39, 39);
     }
     
     /* Media Queries for responsiveness */

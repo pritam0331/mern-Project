@@ -1,7 +1,7 @@
 import React from 'react';
 import './Termsandcond.css';
 
-const Termsandcond = () => {
+function Termsandcond() {
   return (
     <div className="termsandcond-container">
       <h1>Terms and Conditions</h1><br></br>
@@ -50,13 +50,10 @@ const Termsandcond = () => {
 
       <div className="terms-section"><br></br>
         <h2>7. Contact Information</h2>
-        <p>If you have any questions or concerns, please contact us at <a href="mailto:support@raktdaan.com">support@raktdaan.com</a>.</p>
+        <p>If you have any questions/queries, please contact us at <a href="mailto:support@raktdaan.com">support@raktdaan.com</a>.</p>
       </div>
     </div>
   );
 };
 
-
 export default Termsandcond;
-
-

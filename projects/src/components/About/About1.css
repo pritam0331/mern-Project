@@ -2,6 +2,7 @@
   margin-right: 10px;
   height: 100vh;
 }
+
 .head{
   color: red;
   text-align: start;
@@ -13,11 +14,12 @@
 .box1{
   display: flex;
   flex-direction: row;
+  grid-template-columns: 1fr 1fr;
 }
 .box{
   background-color: whitesmoke;
-  width: auto;
-  height: auto;
+  width: 375px;
+  height: 350px;
   border-radius: 10px;
   padding: 20px;
   margin-left: 100px;
@@ -30,19 +32,6 @@
   white-space: nowrap;
   animation: marquee 10s linear infinite;
 }
-.a{
-  text-decoration: none;
-  cursor: pointer;
-  color: black;
- 
- }
- .a:hover{
-  color: red;
- }
-
- hr{
-  border: 1px solid black !important;
- }
 
 @keyframes marquee {
   0% {
@@ -53,11 +42,9 @@
   }
 }
 
-.marquee ul {
+.marquee ol {
   display: flex;
   flex-wrap: nowrap;
-  
-   
 }
 
 .marquee li {
@@ -65,20 +52,17 @@
   margin-right: 20px;
 }
 
-
-
-
 .marquee li:last-child {
   margin-right: 0;
 }
 .container {
-    /* margin-top: 10vh; */
+    margin-top: 10vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 30px;
     margin-top: 20px;
-    /* grid-column: 1; */
+    grid-column: 1;
   }
   
   .container img {
@@ -95,16 +79,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-   }
-  
-   
-   
+    
+   } 
   @media (max-width: 820px) {
-    .box1 {
-      flex-direction: column;
-    }
-  
     .container {
+      flex-direction: column; 
+    }
+  }
+
       flex-direction: column;
       order: 1;
       margin-top: 20px;
@@ -135,3 +117,4 @@
     margin: auto;
   }
 }
+

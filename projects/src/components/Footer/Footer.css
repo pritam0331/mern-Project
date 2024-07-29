@@ -1,9 +1,14 @@
 footer {
+    background-color: rgb(54, 52, 52);
+    color: white;
+   text-align: center;
+   height: 20vh;
     background-color: rgb(240, 240, 240);
     color: black;
     text-align: center;
     height: auto;
     padding: 10px;
+   
 }
 
 .row1 {
@@ -17,21 +22,17 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    margin-left: 40px;
 }
 
 .head p {
     font-size: 20px;
     margin-left: 75px;
-    color: black;
-    font-weight: bold;
+    color: white;
 }
 
 .socials {
     display: flex;
     justify-content: center;
-    color: red;
-    cursor: pointer;
     margin-top: 10px;
     gap: 20px;
     font-size: 25px;
@@ -63,22 +64,18 @@ footer {
 .policy a {
     margin-right: 20px;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 hr {
     width: 90%;
     margin: 0 auto;
-    border: 1px solid black;
+    border: 1px solid white;
 }
-
-.span1{
+.span{
+    display: inline;
     color: red;
     font-size: 20px;
-}
-
-.span2{
-    color: red;
 }
 
 
