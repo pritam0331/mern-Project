@@ -10,6 +10,7 @@ import SignupSignin from './components/Signup/SignupSignin'
 import Signin from './components/Signin/Signin'
 import Footer from './components/Footer/Footer'
 import TermsandCond from './components/Termsandcondition/Termsandcond'
+import Privandpol from './components/Privacyandpolicies/Privandpol'
 // import FAQ from './components/FAQ'
 // import Footer from './components/Footer'
 
@@ -27,6 +28,7 @@ function App() {
     </Routes>
     </BrowserRouter>
     <TermsandCond/>
+    <Privandpol/>
     <Footer/>
     </>
  )

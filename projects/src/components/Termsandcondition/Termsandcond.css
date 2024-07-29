@@ -5,7 +5,8 @@
   padding: 20px;
   background-color: #fff;
   flex-direction: column;
-  width:auto
+  width:auto;
+  text-align: center;
 }
 
 .termsandcond-container h1 {
@@ -41,6 +42,8 @@
   color: #000000;
   line-height: 1.6;
   margin-bottom: 10px;
+  align-content: center;
+  list-style-position: inside;
 }
 
 .termsandcond-container a {
