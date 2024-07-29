@@ -10,8 +10,11 @@ import SignupSignin from './components/Signup/SignupSignin'
 import Signin from './components/Signin/Signin'
 import Footer from './components/Footer/Footer'
 import TermsandCond from './components/Termsandcondition/Termsandcond'
+import Privandpol from './components/Privacyandpolicies/Privandpol'
+
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
+
 // import FAQ from './components/FAQ'
 // import Footer from './components/Footer'
 
@@ -29,7 +32,11 @@ function App() {
       <Route path="/termsandcondition" element={<TermsandCond/>}></Route>
     </Routes>
     </BrowserRouter>
+    <TermsandCond/>
+    <Privandpol/>
+
     {/* <TermsandCond/> */}
+
     <Footer/>
     </>
  )
