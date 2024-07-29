@@ -16,15 +16,18 @@ footer {
 .head {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-    margin-left: 40px;
+  
+    margin-left: 20px;
 }
+
 
 .head p {
     font-size: 20px;
-    margin-left: 75px;
+    margin-left: 50px;
+  margin-bottom: auto;
     color: black;
     font-weight: bold;
+
 }
 
 .socials {
@@ -96,9 +99,10 @@ hr {
 
     .head {
         justify-content: flex-start;
-        margin-top: 0;
+      
     }
-
+  
+    
     .socials {
         justify-content: flex-end;
         margin-top: 0; 
@@ -110,6 +114,7 @@ hr {
         width: 100%;
         align-items: center; 
         margin-top: 0; 
+     padding: 2px;
     }
 
     .content {
@@ -119,6 +124,7 @@ hr {
     .policy {
         justify-content: flex-end;
         margin-top: 0; 
+       
     }
 
     hr {
@@ -145,5 +151,13 @@ hr {
     .content p{
       
         margin-left: 10px;
+    }
+    
+}
+@media (max-width: 270px){
+    .policy a{
+       
+        margin: auto;
+        
     }
 }

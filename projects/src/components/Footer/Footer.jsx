@@ -7,7 +7,7 @@ function Footer() {
     <footer>
       <div className="row1">
         <div className="head">
-          <p>Rakt <span className="span1"> Daan</span></p>
+          <p >Rakt <span className="span1"> Daan</span></p>
 
         </div>
         <div className="socials">

@@ -5,6 +5,7 @@
     padding: 20px;
     border-radius: 10px;
     align-items: stretch;
+    height: 100vh;
   }
   
   .profile-image {
@@ -56,6 +57,7 @@
   @media (max-width: 768px) {
     .profile-card {
       flex-direction: column;
+      height: auto;
     }
     
     .profile-image,
