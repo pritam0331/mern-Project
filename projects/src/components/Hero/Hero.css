@@ -70,7 +70,9 @@
         text-align: center;
         height: auto;
     }
-
+    .Hero-button {
+        margin: auto;
+    }
     .Hero-content {
         max-width: 100%;
         margin-bottom: 2rem;
