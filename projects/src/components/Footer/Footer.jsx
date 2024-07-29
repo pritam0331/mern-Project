@@ -24,9 +24,9 @@ function Footer() {
         </div>
         <div className="policy">
           <a href="/privacy-policies">Privacy & Policies</a>
-          <a href="/terms-conditions">Terms & Conditions</a>
-          <a href="/about-us">About Us</a>
-          <a href="/contact-us">Contact Us</a>
+          <a href="/termsandcondition">Terms & Conditions</a>
+          <a href="/about">About Us</a>
+          <a href="/contact">Contact Us</a>
         </div>
       </div>
       </footer>

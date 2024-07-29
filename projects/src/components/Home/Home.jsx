@@ -3,12 +3,16 @@ import FAQ from '../FAQ/FAQ.jsx'
 import About1 from '../About/About1.jsx'
 import img from '../About/image3.png'
 import './Home.css'
+import Hero from '../Hero/Hero.jsx'
 
 function Home() {
   return (
     <div>
         <div className="profile-card">
         <div className="profile-image">
+        <Hero/>
+        <div className="profile-cards">
+        <div className="profile-images">
           <img src={img} alt="Profile" />
         </div>
         <div className="profile-content">
