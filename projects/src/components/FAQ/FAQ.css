@@ -1,7 +1,8 @@
 .faq-section {
   text-align: center;
   padding: 20px;
-  background-image: url('./faq_bg.jpg');
+  /* background-image: url('./faq_bg.jpg'); */
+  background-color: red;
   border-radius: 10px;
   max-width: auto;
   height: auto;
@@ -12,14 +13,16 @@
 .faq-section h2 {
   font-size: 35px;
   font-weight: bolder;
+  color: white;
   margin-bottom: 10px;
   text-decoration: underline;
-  text-decoration-color: red;
+  text-decoration-color: white;
 }
 
 .faq-section p {
   font-size: 16px;
   font-weight: 600;
+  color: white;
   margin-bottom: 20px;
 }
 
@@ -88,6 +91,7 @@
     font-size: 14px;
   }
 }
+
 @media (max-width: 480px) {
   .faq-section {
     padding: 5px;

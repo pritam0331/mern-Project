@@ -8,14 +8,12 @@ import Hero from '../Hero/Hero.jsx'
 function Home() {
   return (
     <div>
-        <div className="profile-card">
-        <div className="profile-image">
         <Hero/>
         <div className="profile-cards">
         <div className="profile-images">
           <img src={img} alt="Profile" />
         </div>
-        <div className="profile-content">
+        <div className="profile-contents">
           <p>
           Welcome to RAKTDAAN, your trusted partner in saving lives through blood donation. 
           Our mission is to ensure a safe and reliable supply of blood and blood products to 
@@ -29,7 +27,7 @@ function Home() {
           of each contribution. By partnering with local businesses, schools, and community organizations, 
           we aim to make blood donation accessible and convenient for everyone. 
           </p>
-          <a href="/about"><button id='btn'>Read More</button></a>
+          <button id='btn'><a href="/about">Read More</a></button>
         </div>
        
       </div>

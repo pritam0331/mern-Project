@@ -1,14 +1,9 @@
 footer {
-    background-color: rgb(54, 52, 52);
-    color: white;
-   text-align: center;
-   height: 20vh;
     background-color: rgb(240, 240, 240);
     color: black;
     text-align: center;
     height: auto;
     padding: 10px;
-   
 }
 
 .row1 {
@@ -21,24 +16,22 @@ footer {
 .head {
     display: flex;
     justify-content: center;
-    margin-left: 20px;
     margin-top: 10px;
+    margin-left: 40px;
 }
-
 
 .head p {
     font-size: 20px;
-    margin-left: 50px;
-  margin-bottom: auto;
+    margin-left: 75px;
     color: black;
     font-weight: bold;
-    margin-left: 75px;
-    color: white;
 }
 
 .socials {
     display: flex;
     justify-content: center;
+    color: red;
+    cursor: pointer;
     margin-top: 10px;
     gap: 20px;
     font-size: 25px;
@@ -70,18 +63,22 @@ footer {
 .policy a {
     margin-right: 20px;
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 hr {
     width: 90%;
     margin: 0 auto;
-    border: 1px solid white;
+    border: 1px solid black;
 }
-.span{
-    display: inline;
+
+.span1{
     color: red;
     font-size: 20px;
+}
+
+.span2{
+    color: red;
 }
 
 
@@ -99,10 +96,9 @@ hr {
 
     .head {
         justify-content: flex-start;
-      
+        margin-top: 0;
     }
-  
-    
+
     .socials {
         justify-content: flex-end;
         margin-top: 0; 
@@ -114,7 +110,6 @@ hr {
         width: 100%;
         align-items: center; 
         margin-top: 0; 
-     padding: 2px;
     }
 
     .content {
@@ -124,7 +119,6 @@ hr {
     .policy {
         justify-content: flex-end;
         margin-top: 0; 
-       
     }
 
     hr {
@@ -151,13 +145,5 @@ hr {
     .content p{
       
         margin-left: 10px;
-    }
-    
-}
-@media (max-width: 270px){
-    .policy a{
-       
-        margin: auto;
-        
     }
 }

@@ -9,12 +9,11 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import SignupSignin from './components/Signup/SignupSignin'
 import Signin from './components/Signin/Signin'
 import Footer from './components/Footer/Footer'
-import TermsandCond from './components/Termsandcondition/Termsandcond'
-import Privandpol from './components/Privacyandpolicies/Privandpol'
-
+// import TermsandCond from './components/Termsandcondition/Termsandcond'
+import Term from './assets/TermsAndCon/Term'
+import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
-
 // import FAQ from './components/FAQ'
 // import Footer from './components/Footer'
 
@@ -29,14 +28,10 @@ function App() {
       <Route path="/contact" element={<Contact/>}></Route>
       <Route path="/signup" element={<SignupSignin/>}></Route>
       <Route path="/signin" element={<Signin/>}></Route>
-      <Route path="/termsandcondition" element={<TermsandCond/>}></Route>
+      <Route path="/terms" element={<Term/>}></Route>
+      <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
     </Routes>
     </BrowserRouter>
-    <TermsandCond/>
-    <Privandpol/>
-
-    {/* <TermsandCond/> */}
-
     <Footer/>
     </>
  )

@@ -1,7 +1,7 @@
 import React from 'react';
-import './Privandpol.css';
+import './PrivacyAndPolicy.css';
 
-function Privandpol() {
+function PrivacyAndPolicy() {
   return (
     <div className="privandpol-container">
       <h1 className="privandpol-title">Privacy Policy</h1><br></br>
@@ -84,4 +84,4 @@ function Privandpol() {
   );
 }
 
-export default Privandpol;
+export default PrivacyAndPolicy;
