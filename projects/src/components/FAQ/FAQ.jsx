@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './FAQ.css';
+import 'aos/dist/aos.css';
 
 function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -52,7 +53,7 @@ function FAQ() {
   ];
 
   return (
-    <div className="faq-section">
+    <div className="faq-section" data-aos="zoom-in-up">
       <h2>FAQs</h2>
       <p>The health and safety of the donor as well as the recipient must be safeguarded.</p>
       <div className="faq-list">

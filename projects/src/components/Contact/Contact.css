@@ -8,8 +8,9 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      background-color: #ff0e0e;
+      background-color: #ec3a3a;
       padding: 20px;
+      height: 100vh;
     }
 
     .contact-info{
@@ -105,6 +106,9 @@
     
     /* Media Queries for responsiveness */
     @media (min-width: 768px) {
+      .contact-container{
+        height: auto;
+      }
       .contact-info,
       .contact-form {
         width: 48%;
@@ -112,6 +116,9 @@
     }
     
     @media (max-width: 767px) {
+      .contact-container{
+        height: auto;
+      }
       .form-row .form-group {
         width: 100%;
       }

@@ -4,16 +4,17 @@ import About1 from '../About/About1.jsx'
 import img from '../About/image3.png'
 import './Home.css'
 import Hero from '../Hero/Hero.jsx'
+import 'aos/dist/aos.css'
 
 function Home() {
   return (
     <div>
         <Hero/>
         <div className="profile-cards">
-        <div className="profile-images">
+        <div className="profile-images" data-aos="fade-right">
           <img src={img} alt="Profile" />
         </div>
-        <div className="profile-contents">
+        <div className="profile-contents" data-aos="fade-left">
           <p>
           Welcome to RAKTDAAN, your trusted partner in saving lives through blood donation. 
           Our mission is to ensure a safe and reliable supply of blood and blood products to 

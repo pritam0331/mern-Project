@@ -4,6 +4,7 @@
     align-items: center;
     padding: 4rem 2rem;
     height: 100vh;
+    gap: 10px;
     background-color: #f8f9fa;
 }
 
@@ -38,12 +39,18 @@
     font-size: 1rem;
     align-items: center !important;
     background-color: red;
-    margin-left: 315px;
+    margin-left: auto;
+    margin-right: auto;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.Hero-button a{
+    text-decoration: none;
+    color: white;
 }
 
 .Hero-button:hover {

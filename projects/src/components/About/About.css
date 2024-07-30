@@ -4,6 +4,8 @@
     color: black;
     padding: 20px;
     border-radius: 10px;
+    gap: 10px;
+    height: 100vh;
     align-items: stretch;
   }
   
@@ -56,6 +58,7 @@
   @media (max-width: 768px) {
     .profile-card {
       flex-direction: column;
+      height: auto;
     }
     
     .profile-image,

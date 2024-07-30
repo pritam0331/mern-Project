@@ -3,15 +3,22 @@ import './About.css'
 import img from './image1.png'
 import img1 from './image2.png'
 import img2 from './image3.png'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const About = () => {
+    AOS.init({
+      duration: 600,
+      easing: 'linear',
+      offset: 200,
+    })
   return (
     <>
       <div className="profile-card">
-        <div className="profile-image">
+        <div className="profile-image" data-aos="zoom-in-left">
           <img src={img} alt="Profile" />
         </div>
-        <div className="profile-content">
+        <div className="profile-content" data-aos="zoom-in-right">
           <h2 className='text'>1. The Importance of Blood Donation</h2>
           <p>
             Blood donation is a critical and selfless act that saves millions of lives every year. 
@@ -25,7 +32,7 @@ const About = () => {
         </div>
       </div>
       <div className="profile-card">
-        <div className="profile-content">
+        <div className="profile-content" data-aos="zoom-in-left">
         <h2 className='text'>2. The Process of Donating Blood</h2>
           <p>
           Donating blood is a simple, safe, and quick process that typically takes about an hour from start to finish. 
@@ -37,15 +44,15 @@ const About = () => {
           the highest standards of safety and hygiene.
           </p>
         </div>
-        <div className="profile-image">
+        <div className="profile-image" data-aos="zoom-in-right">
           <img src={img1} />
         </div>
       </div>
       <div className="profile-card">
-        <div className="profile-image">
+        <div className="profile-image" data-aos="zoom-in-left">
           <img src={img2}/>
         </div>
-        <div className="profile-content">
+        <div className="profile-content" data-aos="zoom-in-right">
         <h2 className='text'>3. Benefits of Donating Blood</h2>
           <p>
           The benefits of donating blood extend beyond the lives saved; donors also experience positive effects. 
@@ -59,7 +66,7 @@ const About = () => {
         </div>
       </div>
       <div className="profile-card">
-        <div className="profile-content">
+        <div className="profile-content" data-aos="zoom-in-left">
         <h2 className='text'>4. How to Get Involved</h2>
           <p>
           Getting involved in blood donation is straightforward and rewarding. 
@@ -74,7 +81,7 @@ const About = () => {
           we can ensure a steady and reliable blood supply for those in need.
           </p>
         </div>
-        <div className="profile-image">
+        <div className="profile-image" data-aos="zoom-in-right">
           <img src={img}/>
         </div>
       </div>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+// import { FaGoogle } from 'react-icons/fa';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import GoogleButton from 'react-google-button';
 import './SignupSignin.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function SignupSignin() {
   const [user, setUser] = useState(null);
@@ -41,8 +43,16 @@ function SignupSignin() {
     console.log('Form submitted');
   };
 
+  React.useEffect(() => {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-in-sine',
+      offset: 200,
+    })
+  }, [])
+
   return (
-    <div className="signup-signin-container">
+    <div className="signup-signin-container" data-aos="zoom-in">
       <form onSubmit={handleSubmit} className='signup-form'>
         <h1>Create Account</h1>
         <div id='btn1'> <GoogleButton type='button' onClick={() => login()}/></div>

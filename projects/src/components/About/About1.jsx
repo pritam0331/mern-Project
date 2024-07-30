@@ -1,7 +1,14 @@
 import React, { useRef } from 'react';
 import './About1.css';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function About1() {
+  AOS.init({
+    duration: 600,
+    easing: 'ease-in-sine',
+    offset: 200,
+  })
   const marqueeRef = useRef(null);
 
   const handleMouseOver = () => {
@@ -14,9 +21,9 @@ function About1() {
 
   return (
     <div className="about-container">
-      <h1 className="head">Why choose Rakt Daan</h1>
+      <h1 className="head" data-aos="fade-down">Why choose Rakt Daan</h1>
       <div className="box1">
-        <div className="container">
+        <div className="container"  data-aos="zoom-in">
           <div className="img1">
             <img src="https://www.shutterstock.com/image-vector/blood-collection-transfusion-icon-donor-600nw-2129911235.jpg" alt="Sample Collection" />
             <p>Free & On-time Sample Collection</p>

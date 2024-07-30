@@ -4,6 +4,8 @@ import GoogleButton from 'react-google-button'
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import './Signin.css';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function Signin() {
   const [user, setUser] = useState(null);
@@ -40,8 +42,16 @@ function Signin() {
     // Handle form submission logic here
     console.log('Form submitted');
   };
+
+  React.useEffect(() => {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-in-sine',
+      offset: 200,
+    })
+  }, [])
   return (
-    <div className="signin-container">
+    <div className="signin-container" data-aos="zoom-in">
       <form className='signin-form'>
         <h1>Sign In</h1>
         
