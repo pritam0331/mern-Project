@@ -12,6 +12,8 @@ import Footer from './components/Footer/Footer'
 // import TermsandCond from './components/Termsandcondition/Termsandcond'
 import Term from './assets/TermsAndCon/Term'
 import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
+import ForgetPassword from './components/Password/ForgetPassword'
+import BloodAccepter from './components/BloodAccepter/BloodAccepter'
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
 // import FAQ from './components/FAQ'
@@ -30,8 +32,10 @@ function App() {
       <Route path="/signin" element={<Signin/>}></Route>
       <Route path="/terms" element={<Term/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
+      <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
     </Routes>
     </BrowserRouter>
+    {/* <BloodAccepter/> */}
     <Footer/>
     </>
  )
