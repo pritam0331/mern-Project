@@ -11,7 +11,6 @@ import Signin from './components/Signin/Signin'
 import Footer from './components/Footer/Footer'
 import TermsandCond from './components/Termsandcondition/Termsandcond'
 import Privandpol from './components/Privacyandpolicies/Privandpol'
-import Bloodacceptor from './components/Bloodacceptor/Bloodacceptor'
 // import FAQ from './components/FAQ'
 // import Footer from './components/Footer'
 
@@ -26,11 +25,11 @@ function App() {
       <Route path="/contact" element={<Contact/>}></Route>
       <Route path="/signup" element={<SignupSignin/>}></Route>
       <Route path="/signin" element={<Signin/>}></Route>
+      <Route path="/termsandcondition" element={<TermsandCond/>}></Route>
     </Routes>
     </BrowserRouter>
     <TermsandCond/>
     <Privandpol/>
-    <Bloodacceptor/>
     <Footer/>
     </>
  )

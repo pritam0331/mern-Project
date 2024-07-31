@@ -3,6 +3,10 @@ footer {
     color: white;
    text-align: center;
    height: 20vh;
+    background-color: rgb(240, 240, 240);
+    color: black;
+    text-align: center;
+    height: auto;
     padding: 10px;
    
 }
