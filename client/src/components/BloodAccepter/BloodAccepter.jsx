@@ -4,10 +4,10 @@ function BloodAccepter() {
   return (
     <>
       <form className="form-container">
-        <div className="form-group">
-          <label>What type of blood you need ?</label>
+        <div className="form-group1">
+          <label className='label'>What type of blood you need ?</label>
           <div className="radio-group">
-            {['O Positive', 'O Negative', 'A Positive', 'A Negative', 'B Positive', 'B Negative', 'AB Positive', 'AB Negative'].map((type) => (
+            {['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'].map((type) => (
               <label key={type}>
                 <input
                   type="radio"
@@ -20,9 +20,9 @@ function BloodAccepter() {
           </div>
         </div>
         <div>
-          <label>How much blood do you need?<br>
+          <label className='label'>How much blood do you need?<br>
           </br>(In Bottles i.e 460 ml)</label><br>
-          </br><br></br>
+          </br>
          <select name = 'blood' className='quantity-group'>
          <option>1</option>
          <option>2</option>
@@ -36,68 +36,75 @@ function BloodAccepter() {
          <option>10</option>
          </select>
          </div><br></br>
-        <div className="form-group">
-          <label>Full Name</label>
+        <div className="form-group1">
+          <label className='label'>Full Name</label>
           <div className="name-group">
             <input
               type="text"
               name="firstName"
               placeholder="First Name"
+              className='input-fields'
             />
             <input
               type="text"
               name="lastName"
               placeholder="Last Name"
+              className='input-fields'
             />
           </div>
         </div>
-        <div className="form-group">
-          <label>Birth Date</label>
+        <div className="form-group1">
+          <label className='label'>Birth Date</label>
           <div className="birth-date-group">
             <input
             type="date"
             name="birthdate"
+            className='input-fields'
             ></input>
           </div>
         </div>
-        <div className="form-group">
-          <label>Gender</label>
+        <div className="form-group1">
+          <label className='label'>Gender</label>
           <div className="radio-group">
-            <label>
+            <label className='label'>
               <input
                 type="radio"
                 name="gender"
                 value="Male"
+                className='radio-groups'
               />
               Male
             </label>
-            <label>
+            <label className='label'>
               <input
                 type="radio"
                 name="gender"
                 value="Female"
+                className='radio-groups'
               />
               Female
             </label>
           </div>
         </div>
         <div className="contact-details">
-          <label>Phone Number</label>
+          <label className='label'>Phone Number</label>
           <input
             type="tel"
             name="phoneNumber"
             placeholder="Enter your phone number here"
+            className='input-fields'
           />
         </div>
         <div className="contact-details">
-          <label>Email</label>
+          <label className='label'>Email</label>
           <input
             type="email"
             name="email"
-            placeholder="Enter your Email here"
+            placeholder="Enter your phone Email here"
+            className='input-fields'
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className='btn9'>Submit</button>
       </form>
     </>
   );

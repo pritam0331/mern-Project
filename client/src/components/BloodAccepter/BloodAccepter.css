@@ -1,4 +1,4 @@
-/* .form-container {
+/* .form-container1 {
     max-width: 600px;
     margin: auto;
     padding: 20px;
@@ -17,7 +17,7 @@
     text-align: center;
   }
   
-  .form-group {
+  .form-group15 {
     margin-bottom: 15px;
   }
   
@@ -26,7 +26,7 @@
     padding-right: 20px;
   }
   
-  .form-group label {
+  .form-group15 .label {
     display: block;
     margin-bottom: 5px;
   }
@@ -59,7 +59,7 @@
     gap: 18px;
   }
   
-  .radio-group label {
+  .radio-group .label {
     flex: 1 1 45%;
     margin-bottom: 10px;
   }
@@ -75,7 +75,7 @@
     border-radius: 4px;
   }
   
-  button {
+  .btn9 {
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
@@ -86,12 +86,12 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .btn9:hover {
     background-color: #dd2828;
   }
   
   @media (max-width: 600px) {
-    .radio-group label {
+    .radio-group .label {
       flex: 1 1 100%;
     }
   
@@ -100,3 +100,96 @@
       margin-bottom: 10px;
     }
   } */
+
+  .form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .quantity-group {
+    width: 100%;
+    padding: 7px;
+    margin-top: 8px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .form-group1 {
+    margin-bottom: 15px;
+  }
+  
+  .contact-details {
+    margin-bottom: 15px;
+    padding-right: 20px;
+  }
+  
+  .form-group1 .label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .name-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .name-group input[type="text"] {
+    width: 48%;
+  }
+  
+  .birth-date-group {
+    width: 97%;
+  }
+  
+  .birth-date-group input[type="date"]{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+  }
+  
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  
+  .radio-group .label {
+    flex: 1 1 45%;
+    margin-bottom: 10px;
+  }
+  .input-fields{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+  }
+  
+  .btn9 {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #f10f0f;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn9:hover {
+    background-color: #dd2828;
+  }
+  
+  @media (max-width: 600px) {
+    .radio-group .label {
+      flex: 1 1 100%;
+    }
+  
+    .name-group input[type="text"] { 
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }

@@ -35,7 +35,7 @@ function App() {
       <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
     </Routes>
     </BrowserRouter>
-    {/* <BloodAccepter/> */}
+    <BloodAccepter/>
     <Footer/>
     </>
  )
