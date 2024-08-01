@@ -20,7 +20,7 @@ function Hero() {
                 <p className='Hero-text'>These words capture key aspects of blood donation, emphasizing its importance in saving lives, the selfless nature of donors, and the positive impact it has on society.</p>
                     <button className='Hero-button'><a href="/about">Get Started</a></button>
             </div>
-            <div className='Hero-image' data-aos="fade-up-left">
+            <div className='Hero-image' data-aos="fade-up-right">
                 <img src={img} alt='Hero Image'
                 className='Hero-image-src'/>
             </div>
