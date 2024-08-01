@@ -12,6 +12,8 @@ import Footer from './components/Footer/Footer'
 // import TermsandCond from './components/Termsandcondition/Termsandcond'
 import Term from './assets/TermsAndCon/Term'
 import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
+import Doner from './components/Doner/Doner'
+// import Forgot from './components/Form3/Forgot'
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
 // import FAQ from './components/FAQ'
@@ -20,6 +22,7 @@ import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
 function App() {
  return (
   <>
+  
   <BrowserRouter>
   <Navbar/>
     <Routes>
@@ -33,6 +36,9 @@ function App() {
     </Routes>
     </BrowserRouter>
     <Footer/>
+    {/* <Forgot/> */}
+    <Doner/>
+   
     </>
  )
 }
