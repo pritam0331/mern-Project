@@ -11,10 +11,10 @@ function Home() {
     <div>
         <Hero/>
         <div className="profile-cards">
-        <div className="profile-images" data-aos="fade-right">
+        <div className="profile-images" data-aos="zoom-in-right">
           <img src={img} alt="Profile" />
         </div>
-        <div className="profile-contents" data-aos="fade-left">
+        <div className="profile-contents" data-aos="zoom-in-left">
           <p>
           Welcome to RAKTDAAN, your trusted partner in saving lives through blood donation. 
           Our mission is to ensure a safe and reliable supply of blood and blood products to 
