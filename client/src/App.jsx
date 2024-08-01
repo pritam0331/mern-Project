@@ -12,6 +12,9 @@ import Footer from './components/Footer/Footer'
 // import TermsandCond from './components/Termsandcondition/Termsandcond'
 import Term from './assets/TermsAndCon/Term'
 import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
+import ForgetPassword from './components/Password/ForgetPassword'
+import VarifyOtp from './components/Password/VarifyOtp'
+import NewPassword from './components/Password/NewPassword'
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
 // import FAQ from './components/FAQ'
@@ -30,6 +33,9 @@ function App() {
       <Route path="/signin" element={<Signin/>}></Route>
       <Route path="/terms" element={<Term/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
+      <Route path="/forgetpassword" element={<ForgetPassword/>}></Route>
+      <Route path="/varifyotp" element={<VarifyOtp/>}></Route>
+      <Route path="/newpass" element={<NewPassword/>}></Route>
     </Routes>
     </BrowserRouter>
     <Footer/>

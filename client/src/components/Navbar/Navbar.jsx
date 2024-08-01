@@ -18,7 +18,7 @@ class Navbar extends Component {
             <li><a href="/contact">Contact</a></li>
             {/* <li><a href="/signup">Signup</a></li> */}
             {/* <li><a href="/signin">Signin</a></li> */}
-            <div className="sign-button"><button><a href="/signup">Signup/Signin</a></button></div>
+            <div className="sign-button"><a href="/signup"><button>Signup/Signin</button></a></div>
           </ul>
           {/* <button className='signup-button'><a href="/signup">Signup/Signin</a></button> */}
         </div>

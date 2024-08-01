@@ -63,7 +63,7 @@ function Signin() {
         <input type="email" placeholder="Email" className="input-field" />
         <input type="password" placeholder="Password" className="input-field" />
         
-        <a href="#" className="forgot-password">Forgot Your Password</a>
+        <a href="/forgetpassword" className="forgot-password">Forgot Your Password</a>
         
         <button type="submit" className="signin-button">SIGN IN</button>
         <p className="signin-link">Don't have an account? <a href="/signup">Sign up</a></p>
