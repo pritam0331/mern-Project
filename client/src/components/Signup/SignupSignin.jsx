@@ -5,7 +5,7 @@ import GoogleButton from 'react-google-button';
 import './SignupSignin.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { json, Navigate, useNavigate } from 'react-router-dom';
 
 function SignupSignin() {
   const [user, setUser] = useState(null);
@@ -56,8 +56,12 @@ function SignupSignin() {
       })
       // Handle form submission logic here
       result = await result.json();
+      if(result){
+        localStorage.setItem('user',JSON.stringify(result))
+        Navigate('/signin')
+      }
       console.log(result)
-      Navigate('/signin')
+      
       formRef.current.reset(); // Reset the form using the reference
       setName('');
       setEmail('');

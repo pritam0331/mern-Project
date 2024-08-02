@@ -1,11 +1,11 @@
 
 
 
-.med{
+.medical{
     color: black;
 }
 
-.form-container {
+.Form-container {
     margin: auto;
     background-color: white;
     border: 1px solid #ddd;
@@ -32,28 +32,25 @@ label {
     color: #555;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="tel"],
-input[type="email"] {
-    width: calc(100% - 20px);
-    padding: 8px 10px;
-    margin-bottom: 16px;
-    border: 1px solid red;
+.text {
+    width: 100%;
+    
+    margin-top: 5px;
+    border: 1px solid grey;
     border-radius: 4px;
     
 }
 
-.name-field {
+.Name-field {
     display: flex;
     gap: 10px;
 }
 
-.name-field input {
+.Name-field input {
     width: 47%;
 }
 
-.checkbox-group {
+.Checkbox-Group {
     display: flex;
     flex-wrap: wrap;
     gap: 2% ;
@@ -84,25 +81,21 @@ input[type="checkbox"] {
 /* dsfo */
 
 
-/* .bigCon{
+/* .BigCon{
 margin-right: 50%;
 } */
-  .container {
+  .containers {
     display: flex;
     justify-content: space-around;
   
   
   }
-  .option {
+  .options {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
   }
  
-
-
-
-
 legend {
     font-size: 1.2em;
     margin-bottom: 10px;
@@ -131,7 +124,7 @@ label {
 }
 
 
-.submitt{
+.Submitt{
 display: flex;
 gap: 60%;
 flex-wrap: wrap;
@@ -167,13 +160,13 @@ input[type="submit"]:hover,input[type="reset"]:hover{
 
 
 @media (max-width: 768px) {
-    .form-container {
+    .Form-containers {
         max-width: 60%;
     }
-    .name-field input {
+    .Name-field input {
         width: 45%;
     }
-    .checkbox-group {
+    .Checkbox-Group {
         flex-wrap: wrap;
         gap: 10px;
     }
@@ -185,13 +178,13 @@ input[type="submit"]:hover,input[type="reset"]:hover{
 }
 
 @media (max-width: 480px) {
-    .form-container {
+    .Form-containers {
         max-width: 80%;
     }
-    .name-field input {
+    .Name-field input {
         width: 100%;
     }
-    .checkbox-group {
+    .Checkbox-Group {
         flex-wrap: wrap;
         gap: 5px;
     }
@@ -203,13 +196,13 @@ input[type="submit"]:hover,input[type="reset"]:hover{
 }
 
 @media (max-width: 320px) {
-    .form-container {
+    .Form-containers {
         max-width: 90%;
     }
-    .name-field input {
+    .Name-field input {
         width: 100%;
     }
-    .checkbox-group {
+    .Checkbox-Group {
         flex-wrap: wrap;
         gap: 2px;
     }

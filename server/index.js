@@ -7,6 +7,7 @@ const user = require('./config/User')
 const cors = require('cors')
 const bodyparser = require('body-parser')
 const BloodAcc = require('./config/BloodAccepter')
+const BloodDo = require('./config/BloodDonar')
 // const bcrypt = require('bcrypt')
 
 app.use(cors())
@@ -114,3 +115,23 @@ app.post('/bloodacc',async(req,res)=>{
         console.log(chalk.inverse.red(error))
     }
 })
+
+app.post('/blooddonate',async(req,res)=>{
+    const{BloodType,Name,Dob,Phno,Email,Gender,Donated,Extra} = req.body
+    const saveData = new BloodDo({
+        BloodType: BloodType,
+        Name: Name,
+        Dob: Dob,
+        Phno: Phno,
+        Email: Email,
+        Gender: Gender,
+        Donated: Donated,
+        Extra: Extra    
+    })
+    try {
+        const save = await saveData.save()
+        res.send(save)
+    } catch (error) {
+        console.log(chalk.inverse.red(error))
+    }
+    })

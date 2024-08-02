@@ -22,6 +22,7 @@ import VarifyOtp from './components/Password/VarifyOtp'
 import NewPassword from './components/Password/NewPassword'
 
 import BloodAccepter from './components/BloodAccepter/BloodAccepter'
+import PrivatePortal from './components/PrivatePortal/PrivatePortal'
 
 
 
@@ -38,13 +39,16 @@ function App() {
   <BrowserRouter>
   <Navbar/>
     <Routes>
+      <Route element={<PrivatePortal/>}>
       <Route path="/" element={<Home/>}></Route>
       <Route path="/about" element={<About/>}></Route>
       <Route path="/contact" element={<Contact/>}></Route>
-      <Route path="/signup" element={<SignupSignin/>}></Route>
-      <Route path="/signin" element={<Signin/>}></Route>
       <Route path="/terms" element={<Term/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
+      </Route>
+      <Route path="/signup" element={<SignupSignin/>}></Route>
+      <Route path="/signin" element={<Signin/>}></Route>
+      
 
       <Route path="/forgetpassword" element={<ForgetPassword/>}></Route>
       <Route path="/varifyotp" element={<VarifyOtp/>}></Route>
