@@ -12,13 +12,20 @@ import Footer from './components/Footer/Footer'
 // import TermsandCond from './components/Termsandcondition/Termsandcond'
 import Term from './assets/TermsAndCon/Term'
 import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
+
+import Doner from './components/Doner/Doner'
+// import Forgot from './components/Form3/Forgot'
+
 import ForgetPassword from './components/Password/ForgetPassword'
-<<<<<<< HEAD
+
 import VarifyOtp from './components/Password/VarifyOtp'
 import NewPassword from './components/Password/NewPassword'
-=======
+
 import BloodAccepter from './components/BloodAccepter/BloodAccepter'
->>>>>>> 4f31edf1de3bac4ecda4c4298af911682d421108
+
+
+
+
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
 // import FAQ from './components/FAQ'
@@ -27,6 +34,7 @@ import BloodAccepter from './components/BloodAccepter/BloodAccepter'
 function App() {
  return (
   <>
+  
   <BrowserRouter>
   <Navbar/>
     <Routes>
@@ -37,17 +45,20 @@ function App() {
       <Route path="/signin" element={<Signin/>}></Route>
       <Route path="/terms" element={<Term/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
-<<<<<<< HEAD
+
       <Route path="/forgetpassword" element={<ForgetPassword/>}></Route>
       <Route path="/varifyotp" element={<VarifyOtp/>}></Route>
       <Route path="/newpass" element={<NewPassword/>}></Route>
-=======
+
       <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
->>>>>>> 4f31edf1de3bac4ecda4c4298af911682d421108
+
     </Routes>
     </BrowserRouter>
-    {/* <BloodAccepter/> */}
+    <BloodAccepter/>
     <Footer/>
+    {/* <Forgot/> */}
+    <Doner/>
+   
     </>
  )
 }

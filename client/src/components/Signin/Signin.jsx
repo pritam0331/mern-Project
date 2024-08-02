@@ -111,14 +111,14 @@ function Signin() {
         {/* {loginError && <p style={{ color: 'red' }}>{loginError}</p>} */}
         <p className="signin-link">Don't have an account? <a href="/signup">Sign up</a></p>
       </form>
-      {profile && (
+      {/* {profile && (
         <div>
           <h2>User Profile</h2>
           <p>Name: {profile.name}</p>
           <p>Email: {profile.email}</p>
           <button onClick={logOut}>Log out</button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
