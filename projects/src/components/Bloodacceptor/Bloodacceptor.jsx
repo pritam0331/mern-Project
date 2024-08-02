@@ -8,7 +8,7 @@ function Bloodacceptor() {
           <label>What type of blood you need ?</label>
           <div className="radio-group">
             {['O Positive', 'O Negative', 'A Positive', 'A Negative', 'B Positive', 'B Negative', 'AB Positive', 'AB Negative'].map((type) => (
-              <label key={type}>
+              <label key={type}> 
                 <input
                   type="radio"
                   name="bloodType"
@@ -94,7 +94,7 @@ function Bloodacceptor() {
           <input
             type="email"
             name="email"
-            placeholder="Enter your phone Email here"
+            placeholder="Enter your Email here"
           />
         </div>
         <button type="submit">Submit</button>
