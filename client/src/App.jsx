@@ -13,11 +13,11 @@ import Footer from './components/Footer/Footer'
 import Term from './assets/TermsAndCon/Term'
 import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
 
-import Doner from './components/Doner/Doner'
 // import Forgot from './components/Form3/Forgot'
 
 import ForgetPassword from './components/Password/ForgetPassword'
-import BloodAccepter from './components/BloodAccepter/BloodAccepter'
+import BloodAcceptor from './components/BloodAcceptor/BloodAcceptor'
+import PrivatePortal from './components/PrivacyPortal/PrivatePortal'
 
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
@@ -31,20 +31,23 @@ function App() {
   <BrowserRouter>
   <Navbar/>
     <Routes>
+      
       <Route path="/" element={<Home/>}></Route>
       <Route path="/about" element={<About/>}></Route>
+      <Route element={<PrivatePortal/>}>
       <Route path="/contact" element={<Contact/>}></Route>
-      <Route path="/signup" element={<SignupSignin/>}></Route>
-      <Route path="/signin" element={<Signin/>}></Route>
+      
       <Route path="/terms" element={<Term/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
       <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
+      </Route>
+      <Route path="/signup" element={<SignupSignin/>}></Route>
+      <Route path="/signin" element={<Signin/>}></Route>
     </Routes>
     </BrowserRouter>
-    <BloodAccepter/>
     <Footer/>
+    <BloodAcceptor/>
     {/* <Forgot/> */}
-    <Doner/>
    
     </>
  )

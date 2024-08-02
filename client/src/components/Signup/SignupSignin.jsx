@@ -83,9 +83,9 @@ function SignupSignin() {
         <h1>Create Account</h1>
         <div id='btn1'> <GoogleButton style={{background:"white",color:"grey",width:400}} onClick={() => login()}/></div>
         <span className='span'>or use your email for registration</span>
-        <input type="text" name="name" placeholder="Name" className="input-field" value={name} onChange={(e) => setName(e.target.value)}/>
-        <input type="email" name="email" placeholder="Email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <input type="password" name="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <input type="text" name="name" placeholder="Name" className="input-field1" value={name} onChange={(e) => setName(e.target.value)}/>
+        <input type="email" name="email" placeholder="Email" className="input-field1" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input type="password" name="password" placeholder="Password" className="input-field1" value={password} onChange={(e) => setPassword(e.target.value)}/>
         <div className="terms-container">
           <input type="checkbox" id="terms" required />
           <label htmlFor="terms">Accept the terms and Conditions</label>

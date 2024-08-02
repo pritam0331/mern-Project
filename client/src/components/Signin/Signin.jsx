@@ -67,21 +67,24 @@ function Signin() {
   //   }
   // };
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/login',{email,password})
-    .then((res)=>{
-      console.log(res);
-      if(res.data==='success'){
-        navigate('/')
-        setEmail('');
-        setPassword('');
-      }
-    })
-    .catch((err)=>{
-      console.log(err);
+    axios.post('http://localhost:3001/login', { email, password })
+      .then((res) => {
+        console.log(res);
+        if (res.data === 'success') {
+          // Store the user email in localStorage
+          localStorage.setItem('user', JSON.stringify({ email }));
+          navigate('/');
+        } else {
+          alert('Login failed');
+        }
       })
-  }
+      .catch((err) => {
+        console.log(err);
+        alert('An error occurred. Please try again.');
+      });
+  };
 
   useEffect(() => {
     AOS.init({
