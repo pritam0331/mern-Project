@@ -6,6 +6,7 @@ require('./config/dbConn')
 const user = require('./config/User')
 const cors = require('cors')
 const bodyparser = require('body-parser')
+const BloodAcc = require('./config/BloodAccepter')
 // const bcrypt = require('bcrypt')
 
 app.use(cors())
@@ -92,4 +93,24 @@ app.post('/login', (req, res) => {
                 res.send('you have to register before login')
             }
     })
+})
+
+app.post('/bloodacc',async(req,res)=>{
+    const{bloodtype,bloodneed,fname,lname,dob,gender,phoneno,email} = req.body;
+    const saveData = new BloodAcc({
+        fname: fname,
+        lname: lname,
+        bloodtype: bloodtype,
+        bloodneed: bloodneed,
+        dob: dob,
+        gender: gender,
+        phoneno: phoneno,
+        email: email,
+    })
+    try {
+        const save = await saveData.save()
+        res.send(save)
+    } catch (error) {
+        console.log(chalk.inverse.red(error))
+    }
 })
