@@ -8,14 +8,16 @@ const BloodAccepterSchema = mongoose.Schema({
         type:Number,
         required:true
     },
-    fname:{
-        type:String,
-        required:true
+    fullname:{fname:{
+            type:String,
+            required:true
+        },
+        lname:{
+            type:String,
+            required:true
+        }
     },
-    lname:{
-        type:String,
-        required:true
-    },
+    
     dob:{
         type:String,
         required:true

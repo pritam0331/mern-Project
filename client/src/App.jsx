@@ -1,6 +1,7 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
+import './App.css'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
 import Home from './components/Home/Home'
@@ -27,28 +28,23 @@ import PrivatePortal from './components/PrivacyPortal/PrivatePortal'
 function App() {
  return (
   <>
-  
   <BrowserRouter>
   <Navbar/>
     <Routes>
-      
       <Route path="/" element={<Home/>}></Route>
       <Route path="/about" element={<About/>}></Route>
       <Route element={<PrivatePortal/>}>
       <Route path="/contact" element={<Contact/>}></Route>
-      
+      <Route path="/find-donor" element={<BloodAcceptor/>}></Route>
       <Route path="/terms" element={<Term/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
-      <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
       </Route>
+      <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
       <Route path="/signup" element={<SignupSignin/>}></Route>
       <Route path="/signin" element={<Signin/>}></Route>
     </Routes>
     </BrowserRouter>
-    <Footer/>
-    <BloodAcceptor/>
-    {/* <Forgot/> */}
-   
+    <Footer/>   
     </>
  )
 }

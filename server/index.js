@@ -95,22 +95,23 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.post('/bloodacc',async(req,res)=>{
-    const{bloodtype,bloodneed,fname,lname,dob,gender,phoneno,email} = req.body;
-    const saveData = new BloodAcc({
-        fname: fname,
-        lname: lname,
-        bloodtype: bloodtype,
-        bloodneed: bloodneed,
-        dob: dob,
-        gender: gender,
-        phoneno: phoneno,
-        email: email,
-    })
+app.post('/bloodacc', async (req, res) => {
     try {
-        const save = await saveData.save()
-        res.send(save)
+    const { bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email } = req.body;
+    const fullname = {fname,lname};
+    const saveData = new BloodAcc({
+        bloodtype,
+        bloodneed,
+        fullname,
+        dob,
+        gender,
+        phoneno,
+        email,
+    });
+        await saveData.save()
+        res.status(201).json({ message: 'Blood acceptor data saved successfully' });
     } catch (error) {
         console.log(chalk.inverse.red(error))
+        res.status(500).send({ message: 'Error occurred while saving data' })
     }
 })

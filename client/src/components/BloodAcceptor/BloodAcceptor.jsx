@@ -3,33 +3,33 @@ import './BloodAcceptor.css';
 
 function BloodAcceptor() {
   const [fname, setFname] = useState('');
-  const [lname, setLname] = useState('');
-  const [dob, setDob] = useState('');
-  const [bloodtype, setBloodType] = useState('');
-  const [bloodneed, setBloodNeed] = useState(1);
-  const [gender, setGender] = useState('');
-  const [phoneno, setPhoneno] = useState('');
-  const [email, setEmail] = useState('');
+const [lname, setLname] = useState('');
+const [dob, setDob] = useState('');
+const [bloodtype, setBloodType] = useState('');
+const [bloodneed, setBloodNeed] = useState(1);
+const [gender, setGender] = useState('');
+const [phoneno, setPhoneno] = useState('');
+const [email, setEmail] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      console.log({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email });
-      let result = await fetch('http://localhost:3001/bloodacc', {
-        method: 'POST',
-        body: JSON.stringify({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      result = await result.json();
-      console.log(result);
-      alert("Successfully submitted");
-    } catch (error) {
-      console.error(error);
-      alert('Error');
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    console.log({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email });
+    let result = await fetch('http://localhost:3001/bloodacc', {
+      method: 'POST',
+      body: JSON.stringify({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    result = await result.json();
+    console.log(result);
+    alert("Successfully submitted");
+  } catch (error) {
+    console.error(error);
+    alert('Error');
+  }
+};
 
   return (
     <>
