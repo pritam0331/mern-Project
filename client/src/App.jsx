@@ -18,6 +18,7 @@ import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
 import ForgetPassword from './components/Password/ForgetPassword'
 import BloodAcceptor from './components/BloodAcceptor/BloodAcceptor'
 import PrivatePortal from './components/PrivacyPortal/PrivatePortal'
+import Doner from './components/Doner/Doner'
 
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
@@ -47,6 +48,7 @@ function App() {
     </BrowserRouter>
     <Footer/>
     <BloodAcceptor/>
+    <Doner/>
     {/* <Forgot/> */}
    
     </>
