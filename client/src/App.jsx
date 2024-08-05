@@ -39,6 +39,7 @@ function App() {
       <Route path="/find-donor" element={<BloodAcceptor/>}></Route>
       <Route path="/terms" element={<Term/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
+      <Route path="/donate-blood" element={<Doner/>}></Route>
       </Route>
       <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
       <Route path="/signup" element={<SignupSignin/>}></Route>
@@ -46,9 +47,6 @@ function App() {
     </Routes>
     </BrowserRouter>
     <Footer/>   
-    <Footer/>
-    <BloodAcceptor/>
-    <Doner/>
     {/* <Forgot/> */}
     </>
  )

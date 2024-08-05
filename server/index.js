@@ -7,6 +7,7 @@ const user = require('./config/User')
 const cors = require('cors')
 const bodyparser = require('body-parser')
 const BloodAcc = require('./config/BloodAccepter')
+const BloodDonor = require('./config/BloodDonor')
 // const bcrypt = require('bcrypt')
 
 app.use(cors())
@@ -114,4 +115,27 @@ app.post('/bloodacc', async (req, res) => {
         console.log(chalk.inverse.red(error))
         res.status(500).send({ message: 'Error occurred while saving data' })
     }
+})
+
+app.post('/blooddon',async(req,res)=>{
+    try{
+        const {bloodtype,fname,lname,dob,contact,email,gender,donated,extra} = req.body;
+        const fullname = {fname, lname};
+        const saveData = new BloodDonor({
+            bloodtype,
+            fullname,
+            dob,
+            contact,
+            email,
+            gender,
+            donated,
+            extra
+            });
+            await saveData.save()
+            res.status(201).json({message:'Blood donor data saved sucessfully'});
+            }
+            catch(error){
+                console.log(chalk.inverse.red(error));
+                res.status(500).send({message:'Error occurred while saving data'});
+            }
 })
