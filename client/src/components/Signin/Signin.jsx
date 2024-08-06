@@ -12,8 +12,8 @@ function Signin() {
   const [profile, setProfile] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate()
-  // const [loginError, setLoginError] = useState(null);
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
@@ -41,49 +41,45 @@ function Signin() {
     setUser(null);
   };
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
+  const validateForm = () => {
+    let isValid = true;
+    let errors = {};
 
-  //   try {
-  //     // Check email
-  //     const emailResponse = await axios.post('http://localhost:3000/check-email', { email });
+    if (!email.trim()) {
+      errors.email = "*Email is required";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      errors.email = "*Email is invalid";
+      isValid = false;
+    }
 
-  //     if (emailResponse.status === 200) {
-  //       // Email is valid, proceed to check password
-  //       const loginResponse = await axios.post('http://localhost:3000/login', { email, password });
+    if (!password) {
+      errors.password = "*Password is required";
+      isValid = false;
+    }
 
-  //       if (loginResponse.status === 200) {
-  //         setLoginError(null);
-  //         alert('Successfully logged in');
-  //         // Perform any additional login success actions here
-  //       }
-  //     }
-  //   } catch (error) {
-  //     if (error.response && error.response.status === 400) {
-  //       setLoginError(error.response.data.message);
-  //     } else {
-  //       setLoginError('An error occurred. Please try again.');
-  //     }
-  //   }
-  // };
+    setErrors(errors);
+    return isValid;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/login', { email, password })
-      .then((res) => {
-        console.log(res);
-        if (res.data === 'success') {
-          // Store the user email in localStorage
-          localStorage.setItem('user', JSON.stringify({ email }));
-          navigate('/');
-        } else {
-          alert('Login failed');
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        alert('An error occurred. Please try again.');
-      });
+    if (validateForm()) {
+      axios.post('http://localhost:3001/login', { email, password })
+        .then((res) => {
+          console.log(res);
+          if (res.data === 'success') {
+            localStorage.setItem('user', JSON.stringify({ email }));
+            navigate('/');
+          } else {
+            setErrors({ general: 'Invalid email or password' });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setErrors({ general: 'An error occurred. Please try again.' });
+        });
+    }
   };
 
   useEffect(() => {
@@ -105,23 +101,30 @@ function Signin() {
 
         <span className='span'>or use your account</span>
 
-        <input type="email" placeholder="Email" className="input-field" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Password" className="input-field" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input 
+          type="email" 
+          placeholder="Email" 
+          className={`input-field ${errors.email ? 'error' : ''}`}
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+        />
+        {errors.email && <p className="error-message">{errors.email}</p>}
+
+        <input 
+          type="password" 
+          placeholder="Password" 
+          className={`input-field ${errors.password ? 'error' : ''}`}
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+        />
+        {errors.password && <p className="error-message">{errors.password}</p>}
 
         <a href="/forgetpass" className="forgot-password">Forgot Your Password</a>
 
         <button type="submit" className="signin-button">SIGN IN</button>
-        {/* {loginError && <p style={{ color: 'red' }}>{loginError}</p>} */}
+        {errors.general && <p className="error-message1">{errors.general}</p>}
         <p className="signin-link">Don't have an account? <a href="/signup">Sign up</a></p>
       </form>
-      {/* {profile && (
-        <div>
-          <h2>User Profile</h2>
-          <p>Name: {profile.name}</p>
-          <p>Email: {profile.email}</p>
-          <button onClick={logOut}>Log out</button>
-        </div>
-      )} */}
     </div>
   );
 }

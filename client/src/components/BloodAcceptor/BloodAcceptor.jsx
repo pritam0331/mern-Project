@@ -3,33 +3,37 @@ import './BloodAcceptor.css';
 
 function BloodAcceptor() {
   const [fname, setFname] = useState('');
-const [lname, setLname] = useState('');
-const [dob, setDob] = useState('');
-const [bloodtype, setBloodType] = useState('');
-const [bloodneed, setBloodNeed] = useState(1);
-const [gender, setGender] = useState('');
-const [phoneno, setPhoneno] = useState('');
-const [email, setEmail] = useState('');
+  const [lname, setLname] = useState('');
+  const [dob, setDob] = useState('');
+  const [bloodtype, setBloodType] = useState('');
+  const [bloodneed, setBloodNeed] = useState(1);
+  const [gender, setGender] = useState('');
+  const [phoneno, setPhoneno] = useState('');
+  const [email, setEmail] = useState('');
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    console.log({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email });
-    let result = await fetch('http://localhost:3001/bloodacc', {
-      method: 'POST',
-      body: JSON.stringify({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    result = await result.json();
-    console.log(result);
-    alert("Successfully submitted");
-  } catch (error) {
-    console.error(error);
-    alert('Error');
-  }
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      console.log({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email });
+      let result = await fetch('http://localhost:3001/bloodacc', {
+        method: 'POST',
+        body: JSON.stringify({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      result = await result.json();
+      console.log(result);
+      alert("Successfully submitted");
+    } catch (error) {
+      console.error(error);
+      alert('Error');
+    }
+  };
+
+  function calculatePrice() {
+    return bloodneed * 450;
+  };
 
   return (
     <>
@@ -52,19 +56,19 @@ const handleSubmit = async (e) => {
           </div>
         </div>
         <div>
-          <label className='label'>How much blood do you need?<br></br>(In Bottles i.e 460 ml)</label><br></br>
+          <label className='label'>How much blood do you need? (In Bottles i.e 460 ml)</label><br />
           <select
             name='blood'
             className='input-fields'
             value={bloodneed}
-            onChange={(e) => setBloodNeed(e.target.value)}
+            onChange={(e) => setBloodNeed(parseInt(e.target.value))}
             required
           >
-            {[...Array(10).keys()].map(i => (
-              <option key={i + 1} value={i + 1}>{i + 1}</option>
+            {Array.from({ length: 10 }, (_, i) => i + 1).map(number => (
+              <option key={number} value={number}>{number}</option>
             ))}
           </select>
-        </div><br></br>
+        </div><br />
         <div className="form-group1">
           <label className='label'>Full Name</label>
           <div className="name-group">
@@ -113,7 +117,7 @@ const handleSubmit = async (e) => {
                 onChange={(e) => setGender(e.target.value)}
                 required
               />
-              Male
+              &nbsp;Male
             </label>
             <label className='label'>
               <input
@@ -124,7 +128,7 @@ const handleSubmit = async (e) => {
                 onChange={(e) => setGender(e.target.value)}
                 required
               />
-              Female
+              &nbsp;Female
             </label>
           </div>
         </div>
@@ -152,7 +156,9 @@ const handleSubmit = async (e) => {
             required
           />
         </div>
-        <button type="submit" className='btn9'>Submit</button>
+        <div className="btn-container">
+          <button type="submit" className='btn9'>Pay ₹{calculatePrice()}</button>
+        </div>
       </form>
     </>
   );

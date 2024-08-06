@@ -107,6 +107,17 @@ h1 {
   text-decoration: underline;
 }
 
+.input-field.error {
+  border-color: red;
+}
+
+.error-message1 {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 480px) {
   .signin-form  {
     padding: 1.5rem;
