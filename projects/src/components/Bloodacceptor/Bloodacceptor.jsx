@@ -1,18 +1,54 @@
+import { useState } from 'react';
 import './Bloodacceptor.css';
 
-function Bloodacceptor() {
+function BloodAcceptor() {
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
+  const [dob, setDob] = useState('');
+  const [bloodtype, setBloodType] = useState('');
+  const [bloodneed, setBloodNeed] = useState(1);
+  const [gender, setGender] = useState('');
+  const [phoneno, setPhoneno] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      console.log({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email });
+      let result = await fetch('http://localhost:3001/bloodacc', {
+        method: 'POST',
+        body: JSON.stringify({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      result = await result.json();
+      console.log(result);
+      alert("Successfully submitted");
+    } catch (error) {
+      console.error(error);
+      alert('Error');
+    }
+  };
+
+  function calculatePrice() {
+    return bloodneed * 450;
+  };
+
   return (
     <>
-      <form className="form-container">
-        <div className="form-group">
-          <label>What type of blood you need ?</label>
+      <form className="form-container" onSubmit={handleSubmit}>
+        <div className="form-group1">
+          <label className='label'>What type of blood do you need?</label>
           <div className="radio-group">
-            {['O Positive', 'O Negative', 'A Positive', 'A Negative', 'B Positive', 'B Negative', 'AB Positive', 'AB Negative'].map((type) => (
-              <label key={type}> 
+            {['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'].map((type) => (
+              <label key={type}>
                 <input
                   type="radio"
                   name="bloodType"
                   value={type}
+                  onChange={(e) => setBloodType(e.target.value)}
+                  required
                 />
                 {type}
               </label>
@@ -20,87 +56,112 @@ function Bloodacceptor() {
           </div>
         </div>
         <div>
-          <label>How much blood do you need?<br>
-          </br>(In Bottles i.e 460 ml)</label><br>
-          </br><br></br>
-         <select name = 'blood' className='quantity-group'>
-         <option>1</option>
-         <option>2</option>
-         <option>3</option>
-         <option>4</option>
-         <option>5</option>
-         <option>6</option>
-         <option>7</option>
-         <option>8</option>
-         <option>9</option>
-         <option>10</option>
-         </select>
-         </div><br></br>
-        <div className="form-group">
-          <label>Full Name</label>
+          <label className='label'>How much blood do you need? (In Bottles i.e 460 ml)</label><br />
+          <select
+            name='blood'
+            className='input-fields'
+            value={bloodneed}
+            onChange={(e) => setBloodNeed(parseInt(e.target.value))}
+            required
+          >
+            {Array.from({ length: 10 }, (_, i) => i + 1).map(number => (
+              <option key={number} value={number}>{number}</option>
+            ))}
+          </select>
+        </div><br />
+        <div className="form-group1">
+          <label className='label'>Full Name</label>
           <div className="name-group">
             <input
               type="text"
               name="firstName"
               placeholder="First Name"
+              className='input-fields'
+              value={fname}
+              onChange={(e) => setFname(e.target.value)}
+              required
             />
             <input
               type="text"
               name="lastName"
               placeholder="Last Name"
+              className='input-fields'
+              value={lname}
+              onChange={(e) => setLname(e.target.value)}
+              required
             />
           </div>
         </div>
-        <div className="form-group">
-          <label>Birth Date</label>
+        <div className="form-group1">
+          <label className='label'>Birth Date</label>
           <div className="birth-date-group">
             <input
-            type="date"
-            name="birthdate"
-            ></input>
+              type="date"
+              name="birthdate"
+              className='input-fields'
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
+              required
+            />
           </div>
         </div>
-        <div className="form-group">
-          <label>Gender</label>
+        <div className="form-group1">
+          <label className='label'>Gender</label>
           <div className="radio-group">
-            <label>
+            <label className='label'>
               <input
                 type="radio"
                 name="gender"
                 value="Male"
+                className='radio-groups'
+                onChange={(e) => setGender(e.target.value)}
+                required
               />
-              Male
+              &nbsp;Male
             </label>
-            <label>
+            <label className='label'>
               <input
                 type="radio"
                 name="gender"
                 value="Female"
+                className='radio-groups'
+                onChange={(e) => setGender(e.target.value)}
+                required
               />
-              Female
+              &nbsp;Female
             </label>
           </div>
         </div>
         <div className="contact-details">
-          <label>Phone Number</label>
+          <label className='label'>Phone Number</label>
           <input
             type="tel"
             name="phoneNumber"
             placeholder="Enter your phone number here"
+            className='input-fields'
+            value={phoneno}
+            onChange={(e) => setPhoneno(e.target.value)}
+            required
           />
         </div>
         <div className="contact-details">
-          <label>Email</label>
+          <label className='label'>Email</label>
           <input
             type="email"
             name="email"
             placeholder="Enter your Email here"
+            className='input-fields'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
-        <button type="submit">Submit</button>
+        <div className="btn-container">
+          <button type="submit" className='btn9'>Pay ₹;{calculatePrice()}</button>
+        </div>
       </form>
     </>
   );
 }
 
-export default Bloodacceptor;
+export default BloodAcceptor;
