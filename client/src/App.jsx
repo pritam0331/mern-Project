@@ -11,7 +11,6 @@ import SignupSignin from './components/Signup/SignupSignin'
 import Signin from './components/Signin/Signin'
 import Footer from './components/Footer/Footer'
 // import TermsandCond from './components/Termsandcondition/Termsandcond'
-import Term from './assets/TermsAndCon/Term'
 import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
 
 // import Forgot from './components/Form3/Forgot'
@@ -20,8 +19,12 @@ import ForgetPassword from './components/Password/ForgetPassword'
 import BloodAcceptor from './components/BloodAcceptor/BloodAcceptor'
 import PrivatePortal from './components/PrivacyPortal/PrivatePortal'
 import Doner from './components/Doner/Doner'
+
 import VerifyOtp from './components/VerifyOtp/VerifyOtp'
 import ConfirmPassword from './components/ConfirmPassword/ConfirmPassword'
+
+import Termsandcond from './components/Termsandcondition/Termsandcond'
+
 
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
@@ -39,7 +42,7 @@ function App() {
       <Route element={<PrivatePortal/>}>
       <Route path="/contact" element={<Contact/>}></Route>
       <Route path="/find-donor" element={<BloodAcceptor/>}></Route>
-      <Route path="/terms" element={<Term/>}></Route>
+      <Route path="/terms" element={<Termsandcond/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
       <Route path="/donate-blood" element={<Doner/>}></Route>
       </Route>
@@ -50,8 +53,8 @@ function App() {
       <Route path="/signin" element={<Signin/>}></Route>
     </Routes>
     </BrowserRouter>
+
     <Footer/>  
-    {/* <Forgot/> */}
     </>
  )
 }
