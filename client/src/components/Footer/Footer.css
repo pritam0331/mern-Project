@@ -1,0 +1,149 @@
+footer {
+    background-color: rgb(240, 240, 240);
+    color: black;
+    text-align: center;
+    height: auto;
+    padding: 10px;
+}
+
+.row1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.head {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.head p {
+    font-size: 20px;
+    margin-left: 75px;
+    color: black;
+    font-weight: bold;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    color: red;
+    cursor: pointer;
+    margin-top: 10px;
+    gap: 20px;
+    font-size: 25px;
+    margin-right: 75px;
+}
+
+.foot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.content {
+    text-align: center;
+    margin-top: 5px;
+}
+.content p{
+   margin-left: 75px;
+}
+
+.policy {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-right: 50px;
+}
+
+.policy a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+hr {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.span1{
+    color: red;
+    font-size: 20px;
+}
+
+.span2{
+    color: red;
+}
+
+
+@media (min-width: 768px) {
+    footer {
+        padding: 20px 40px; 
+    }
+
+    .row1 {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .head {
+        justify-content: flex-start;
+        margin-top: 0;
+    }
+
+    .socials {
+        justify-content: flex-end;
+        margin-top: 0; 
+    }
+
+    .foot {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center; 
+        margin-top: 0; 
+    }
+
+    .content {
+        text-align: left;
+    }
+
+    .policy {
+        justify-content: flex-end;
+        margin-top: 0; 
+    }
+
+    hr {
+        margin: 10px 5%; 
+    }
+}
+
+@media (max-width: 767px) {
+    .policy{
+        margin: auto;
+        margin-top: 10px
+    }
+    .policy a {
+        margin-right: 10px; 
+    }
+    .head p{
+       margin: auto;
+       margin-bottom: 10px;
+    }
+    .socials{
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .content p{
+      
+        margin-left: 10px;
+    }
+}

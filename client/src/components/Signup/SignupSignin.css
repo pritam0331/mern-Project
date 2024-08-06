@@ -1,0 +1,155 @@
+.signup-signin-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding: 1rem;
+	box-sizing: border-box;
+  }
+  
+  .signup-form {
+	width: 800px;
+	padding: 2rem;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+	margin-bottom: 1.5rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: center;
+  }
+  
+  .btn1 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 0.75rem;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: background 0.3s;
+	margin-bottom: 1.5rem;
+	width: 100%;
+  }
+  
+  .span {
+	display: block;
+	margin-bottom: 1.5rem;
+	font-size: 0.9rem;
+	color: #888;
+	text-align: center;
+  }
+  
+  .input-field1 {
+	width: 100%;
+	padding: 0.75rem;
+	margin-bottom: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+	background: #f2f2f2;
+	font-size: 0.9rem;
+  }
+  
+  .terms-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1.5rem;
+  }
+  
+  .terms-container input[type="checkbox"] {
+	margin-right: 0.5rem;
+  }
+  
+  .terms-container label {
+	font-size: 0.9rem;
+	color: #333;
+  }
+  
+  .signup-button {
+	width: 100%;
+	padding: 0.75rem;
+	border: none;
+	border-radius: 30px;
+	background-color: red;
+	color: white;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background 0.3s;
+  }
+  
+  .signup-button:hover {
+	background-color: red;
+	box-shadow: 0 5px 15px rgb(255, 39, 39);
+  }
+  
+  .signin-link {
+	margin-top: 1.5rem;
+	font-size: 0.9rem;
+	color: #333;
+	text-align: center;
+  }
+  
+  .signin-link a {
+	color: #ff5722;
+	text-decoration: none;
+  }
+  
+  .signin-link a:hover {
+	text-decoration: underline;
+  }
+  
+  @media (max-width: 480px) {
+	
+	.signup-form  {
+	  padding: 1.5rem;
+	  width: 100%;
+	}
+  
+	h1 {
+	  font-size: 1.3rem;
+	}
+  
+	.google-button,
+	.input-field1,
+	.signup-button {
+	  padding: 0.6rem;
+	  font-size: 0.8rem;
+	}
+  
+	.span,
+	.terms-container label,
+	.signin-link {
+	  font-size: 0.8rem;
+	}
+  }
+  
+  @media (max-width: 320px) {
+	
+	.signup-form  {
+	  padding: 1.5rem;
+	  width: 100%;
+	}
+  
+	h1 {
+	  font-size: 1.2rem;
+	}
+  
+	.google-button,
+	.input-field1,
+	.signup-button {
+	  padding: 0.5rem;
+	  font-size: 0.7rem;
+	}
+  
+	.span,
+	.terms-container label,
+	.signin-link {
+	  font-size: 0.7rem;
+	}
+  }

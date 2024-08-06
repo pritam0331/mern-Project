@@ -1,0 +1,92 @@
+.form-container {
+    max-width: 70%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* .quantity-group {
+    width: 100%;
+    padding: 7px;
+    margin-top: 8px;
+    border-radius: 4px;
+    text-align: center;
+  } */
+  
+  .form-group1 {
+    margin-bottom: 15px;
+  }
+  
+  .contact-details {
+    margin-bottom: 15px;
+    padding-right: 20px;
+  }
+  
+  .form-group1 .label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .name-group {
+    display: flex;
+    justify-content: space-around;
+    gap: 0px;
+  }
+  
+  .name-group input[type="text"] {
+    width: 48%;
+  }
+  
+  .birth-date-group {
+    width: 100%;
+  }
+  
+  .birth-date-group input[type="date"]{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+  }
+  
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  
+  .radio-group .label {
+    flex: 1 1 45%;
+    margin-bottom: 10px;
+  }
+  .input-fields{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid grey;
+    border-radius: 4px;
+  }
+  
+  .btn9 {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #f10f0f;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn9:hover {
+    background-color: #dd2828;
+  }
+  
+  @media (max-width: 600px) {
+    .radio-group .label {
+      flex: 1 1 100%;
+    }
+  
+    .name-group input[type="text"] { 
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }

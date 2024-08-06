@@ -1,0 +1,122 @@
+.privandpol-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .privandpol-title {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    text-decoration-color: #b31b1b;
+  }
+  
+  .privandpol-section {
+    margin-bottom: 20px;
+    color:#000000
+  }
+  
+  .privandpol-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000000; 
+  }
+  
+  .privandpol-section h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #000000; 
+  }
+  .support
+  {
+    color: #b31b1b;
+  }
+  .privandpol-section p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .privandpol-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  
+  .privandpol-section ul li {
+    margin-bottom: 5px;
+    list-style-position: inside;
+  }
+  
+  .privandpol-section a {
+    color: #000000; 
+    text-decoration: none;
+  }
+  
+  .privandpol-section a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .privandpol-container {
+      padding: 15px;
+    }
+  
+    .privandpol-title {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+  
+    .privandpol-date {
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+  
+    .privandpol-section h2 {
+      font-size: 22px;
+    }
+  
+    .privandpol-section h3 {
+      font-size: 18px;
+    }
+  
+    .privandpol-section p,
+    .privandpol-section ul {
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .privandpol-container {
+      padding: 10px;
+    }
+  
+    .privandpol-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  
+    .privandpol-date {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+  
+    .privandpol-section h2 {
+      font-size: 20px;
+    }
+  
+    .privandpol-section h3 {
+      font-size: 16px;
+    }
+  
+    .privandpol-section p,
+    .privandpol-section ul {
+      font-size: 14px;
+    }
+  }
