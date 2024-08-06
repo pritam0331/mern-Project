@@ -20,6 +20,7 @@ import ForgetPassword from './components/Password/ForgetPassword'
 import BloodAcceptor from './components/BloodAcceptor/BloodAcceptor'
 import PrivatePortal from './components/PrivacyPortal/PrivatePortal'
 import Doner from './components/Doner/Doner'
+import BloodTest from './components/BloodTest/BloodTest'
 
 // import Hero from './components/Hero/Hero'
 // import TermsAndCond from './components/Termsandcondition/Termsandcond'
@@ -40,6 +41,7 @@ function App() {
       <Route path="/terms" element={<Term/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
       <Route path="/donate-blood" element={<Doner/>}></Route>
+      <Route path="/blood-test" element={<BloodTest/>}></Route>
       </Route>
       <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
       <Route path="/signup" element={<SignupSignin/>}></Route>
