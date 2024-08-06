@@ -13,8 +13,10 @@ function SignupSignin() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
+  const [termsAccepted, setTermsAccepted] = useState(false);
   const Navigate = useNavigate();
-  const formRef = useRef(null); // Create a reference to the form element
+  const formRef = useRef(null);
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
@@ -43,33 +45,68 @@ function SignupSignin() {
     localStorage.removeItem('user');
   };
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-    try{
-      console.log({name,email,password});
-      let result = await fetch('http://localhost:3001',{
-        method:'POST',
-        body: JSON.stringify({name,email,password}),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      // Handle form submission logic here
-      result = await result.json();
-      console.log(result)
-      Navigate('/signin')
-      formRef.current.reset(); // Reset the form using the reference
-      setName('');
-      setEmail('');
-      setPassword('');
+  const validateForm = () => {
+    let isValid = true;
+    let errors = {};
+
+    if (!name.trim()) {
+      errors.name = "*Name is required";
+      isValid = false;
     }
-    catch(error){
-      console.error(error);
-      alert('Error signing up')
+
+    if (!email.trim()) {
+      errors.email = "*Email is required";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      errors.email = "*Email is invalid";
+      isValid = false;
+    }
+
+    if (!password) {
+      errors.password = "*Password is required";
+      isValid = false;
+    } else if (password.length < 6) {
+      errors.password = "Password must be at least 6 characters long";
+      isValid = false;
+    }
+
+    if (!termsAccepted) {
+      errors.terms = "You must accept the terms and conditions";
+      isValid = false;
+    }
+
+    setErrors(errors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      try {
+        console.log({name, email, password});
+        let result = await fetch('http://localhost:3001', {
+          method: 'POST',
+          body: JSON.stringify({name, email, password}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        result = await result.json();
+        console.log(result);
+        Navigate('/signin');
+        formRef.current.reset();
+        setName('');
+        setEmail('');
+        setPassword('');
+        setTermsAccepted(false);
+      } catch (error) {
+        console.error(error);
+        alert('Error signing up');
+      }
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     AOS.init({
       duration: 600,
       easing: 'ease-in-sine',
@@ -81,15 +118,50 @@ function SignupSignin() {
     <div className="signup-signin-container" data-aos="zoom-in">
       <form ref={formRef} onSubmit={handleSubmit} className='signup-form'>
         <h1>Create Account</h1>
-        <div id='btn1'> <GoogleButton style={{background:"white",color:"grey",width:400}} onClick={() => login()}/></div>
+        <div id='btn1'>
+          <GoogleButton 
+            style={{background:"white", color:"grey", width:400}} 
+            onClick={() => login()}
+          />
+        </div>
         <span className='span'>or use your email for registration</span>
-        <input type="text" name="name" placeholder="Name" className="input-field1" value={name} onChange={(e) => setName(e.target.value)}/>
-        <input type="email" name="email" placeholder="Email" className="input-field1" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <input type="password" name="password" placeholder="Password" className="input-field1" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="Name" 
+          className="input-field1" 
+          value={name} 
+          onChange={(e) => setName(e.target.value)}
+        />
+        {errors.name && <p className="error-message">{errors.name}</p>}
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Email" 
+          className="input-field1" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        {errors.email && <p className="error-message">{errors.email}</p>}
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Password" 
+          className="input-field1" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {errors.password && <p className="error-message">{errors.password}</p>}
         <div className="terms-container">
-          <input type="checkbox" id="terms" required />
+          <input 
+            type="checkbox" 
+            id="terms" 
+            checked={termsAccepted}
+            onChange={(e) => setTermsAccepted(e.target.checked)}
+          />
           <label htmlFor="terms">Accept the terms and Conditions</label>
         </div>
+        {errors.terms && <p className="error-message">{errors.terms}</p>}
         <button type="submit" className="signup-button">SIGN UP</button>
         <p className="signin-link">Already have an account? <a href="/signin">Sign in</a></p>
       </form>
