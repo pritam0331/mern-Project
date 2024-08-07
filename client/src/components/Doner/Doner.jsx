@@ -88,6 +88,25 @@ function Doner() {
               </div>
             </div>
           </div>
+
+          <div className="blood-doner">
+            <label htmlFor="bloodAmount" className="blood-label">
+              How much blood are you donating? (In Bottles i.e 460 ml)
+            </label>
+            <select id="bloodAmount" name="bloodAmount" className="select-doner">
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+              <option value={6}>6</option>
+              <option value={7}>7</option>
+              <option value={8}>8</option>
+              <option value={9}>9</option>
+              <option value={10}>10</option>
+            </select>
+          </div>
+
           <label htmlFor="first-name">Name:</label>
           <div className="name-field-doner">
             <input type="text" id="first-name" name="first-name" placeholder="First" className="text-doner" value={fname} onChange={(e) => setFname(e.target.value)}/>

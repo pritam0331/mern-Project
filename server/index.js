@@ -8,6 +8,7 @@ const cors = require('cors')
 const bodyparser = require('body-parser')
 const BloodAcc = require('./config/BloodAccepter')
 const BloodDonor = require('./config/BloodDonor')
+const BloodTest = require('./config/BloodTest')
 // const bcrypt = require('bcrypt')
 
 app.use(cors())
@@ -121,6 +122,9 @@ app.post('/blooddon',async(req,res)=>{
     try{
         const {bloodtype,fname,lname,dob,contact,email,gender,donated,extra} = req.body;
         const fullname = {fname, lname};
+        if (!bloodtype || !fname || !lname || !dob || !contact || !email || !gender) {
+            return res.status(400).json({ message: 'All fields are required' });
+          }
         const saveData = new BloodDonor({
             bloodtype,
             fullname,
@@ -138,4 +142,20 @@ app.post('/blooddon',async(req,res)=>{
                 console.log(chalk.inverse.red(error));
                 res.status(500).send({message:'Error occurred while saving data'});
             }
+})
+
+app.post('/bloodtest',async(req,res)=>{
+    try{
+        const {fname,lname,email,phno,prefDate,appTime,addComment} = req.body
+        const fullname = {fname,lname}
+        const saveData = new BloodTest({
+            fullname,email,phno,prefDate,appTime,addComment
+        })
+        await saveData.save()
+        res.status(201).json({message:'Blood Test data save sucessfully'})
+    }
+    catch(error){
+        console.log(chalk.inverse.red(error))
+        res.status(500).send({message:'Error occured while saving data'})
+    }
 })

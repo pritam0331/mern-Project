@@ -19,6 +19,7 @@ import ForgetPassword from './components/Password/ForgetPassword'
 import BloodAcceptor from './components/BloodAcceptor/BloodAcceptor'
 import PrivatePortal from './components/PrivacyPortal/PrivatePortal'
 import Doner from './components/Doner/Doner'
+import BloodTest from './components/BloodTest/BloodTest'
 
 import VerifyOtp from './components/VerifyOtp/VerifyOtp'
 import ConfirmPassword from './components/ConfirmPassword/ConfirmPassword'
@@ -45,6 +46,7 @@ function App() {
       <Route path="/terms" element={<Termsandcond/>}></Route>
       <Route path="/privacy" element={<PrivacyAndPolicy/>}></Route>
       <Route path="/donate-blood" element={<Doner/>}></Route>
+      <Route path="/blood-test" element={<BloodTest/>}></Route>
       </Route>
       <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
       <Route path='/verifyotp' element={<VerifyOtp/>}></Route>

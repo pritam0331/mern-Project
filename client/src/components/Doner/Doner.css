@@ -46,7 +46,7 @@ label {
 }
 
 .name-field-doner .text-doner {
-    width: 47%;
+max-width: 48.5%;
 }
 
 .checkbox-group-doner {
@@ -144,6 +144,33 @@ label {
 .span1-doner {
     color: red;
     font-size: 30px;
+}
+
+.blood-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.select-doner {
+    width: 98%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid ;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 35px;
+   font-size: 13px;
+}
+
+
+.select-doner:focus {
+    outline: none;
+    
+}
+.blood-doner{
+    margin-bottom: 10px;
 }
 
 @media screen {
