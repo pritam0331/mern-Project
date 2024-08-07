@@ -20,9 +20,10 @@ footer {
     margin-left: 40px;
 }
 
-.head p {
+.p-doner {
     font-size: 20px;
-    margin-left: 75px;
+    margin-left: 70px;
+    margin-bottom: 0px;
     color: black;
     font-weight: bold;
 }
