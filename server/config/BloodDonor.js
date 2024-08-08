@@ -4,6 +4,10 @@ const DonorSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    blooddonate:{
+        type:Number,
+        required:true
+    },
     fullname:{
         fname:{
             type:String,

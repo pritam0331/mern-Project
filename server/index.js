@@ -9,6 +9,8 @@ const bodyparser = require('body-parser')
 const BloodAcc = require('./config/BloodAccepter')
 const BloodDonor = require('./config/BloodDonor')
 const BloodTest = require('./config/BloodTest')
+const google = require('./config/LoginWithGoogle')
+
 // const bcrypt = require('bcrypt')
 
 app.use(cors())
@@ -120,13 +122,14 @@ app.post('/bloodacc', async (req, res) => {
 
 app.post('/blooddon',async(req,res)=>{
     try{
-        const {bloodtype,fname,lname,dob,contact,email,gender,donated,extra} = req.body;
+        const {bloodtype,blooddonate,fname,lname,dob,contact,email,gender,donated,extra} = req.body;
         const fullname = {fname, lname};
         if (!bloodtype || !fname || !lname || !dob || !contact || !email || !gender) {
             return res.status(400).json({ message: 'All fields are required' });
           }
         const saveData = new BloodDonor({
             bloodtype,
+            blooddonate,
             fullname,
             dob,
             contact,
@@ -159,3 +162,14 @@ app.post('/bloodtest',async(req,res)=>{
         res.status(500).send({message:'Error occured while saving data'})
     }
 })
+
+
+app.post('/api/google-login', async (req, res) => {
+    const { googleId, email, name, profilePic } = req.body;
+    let user = await google.findOne({ googleId });
+    if (!user) {
+      user = new google({ googleId, email, name, profilePic });
+      await user.save();
+    }
+    res.status(200).json(user);
+  });
