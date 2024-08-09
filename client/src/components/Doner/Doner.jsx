@@ -8,7 +8,6 @@ function Doner() {
   const [bloodtype, setBloodType] = useState('');
   const [blooddonate,setBloodDonate] = useState("1");
   const [donated, setDonated] = useState(null);
-  const [extra, setExtra] = useState([]);
   const [gender, setGender] = useState('');
   const [contact, setContact] = useState('');
   const [email, setEmail] = useState('');
@@ -27,7 +26,6 @@ function Doner() {
     if (!email.trim()) formErrors.email = "*Email is required";
     else if (!/\S+@\S+\.\S+/.test(email)) formErrors.email = "*Invalid email format";
     if (donated === null) formErrors.donated = "*Please select a donation status";
-    if (extra.length === 0) formErrors.extra = "*Please select at least one option";
 
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
@@ -39,7 +37,7 @@ function Doner() {
       try {
         const response = await fetch('http://localhost:3001/blooddon', {
           method: 'POST',
-          body: JSON.stringify({ bloodtype,blooddonate, fname, lname, dob, contact, email, gender, donated, extra }),
+          body: JSON.stringify({ bloodtype,blooddonate, fname, lname, dob, contact, email, gender, donated}),
           headers: {
             'Content-Type': 'application/json'
           }
@@ -54,17 +52,7 @@ function Doner() {
     }
   };
 
-  const handleExtraChange = (e) => {
-    const value = e.target.value;
-    setExtra(prev => 
-      e.target.checked 
-        ? [...prev, value]
-        : prev.filter(item => item !== value)
-    );
-  };
-
   const bloodTypes = ['O Rh+', 'O Rh-', 'A Rh+', 'A Rh-', 'B Rh+', 'B Rh-', 'AB Rh+', 'AB Rh-'];
-  const extraOptions = ['Tattooing', 'Piercing', 'Dental extraction'];
 
   return (
     <div>
@@ -103,7 +91,7 @@ function Doner() {
               value={blooddonate}
               onChange={(e) => setBloodDonate(e.target.value)}
             >
-              {[1,2,3,4,5,6,7,8,9,10].map((num) => (
+              {[1,2,3].map((num) => (
                 <option key={num} value={num}>{num}</option>
               ))}
             </select>
@@ -168,25 +156,6 @@ function Doner() {
             ))}
           </div>
           {errors.donated && <span className="error">{errors.donated}</span>}
-          
-          <label>In the last six months have you had any of the following?</label>
-          <div className="checkbox-group-doner">
-            {extraOptions.map((option) => (
-              <div key={option}>
-                <input 
-                  type="checkbox" 
-                  id={option.toLowerCase().replace(' ', '-')} 
-                  name={option.toLowerCase().replace(' ', '-')} 
-                  className="checkbox-doner" 
-                  value={option}
-                  onChange={handleExtraChange}
-                  checked={extra.includes(option)}
-                />
-                <label htmlFor={option.toLowerCase().replace(' ', '-')}>{option}</label>
-              </div>
-            ))}
-          </div>
-          {errors.extra && <span className='error'>{errors.extra}</span>}
           
           <div className='submitt-doner'>
             <input type="submit" className="submit-doner" />

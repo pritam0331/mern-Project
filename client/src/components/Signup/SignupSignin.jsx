@@ -15,7 +15,7 @@ function SignupSignin() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [termsAccepted, setTermsAccepted] = useState(false);
-  const [userType, setUserType] = useState("");
+  const [role, setRole] = useState("");
   const [secretKey, setSecretKey] = useState("");
   const navigate = useNavigate();
   const formRef = useRef(null);
@@ -83,7 +83,7 @@ function SignupSignin() {
       isValid = false;
     }
 
-    if (userType === "admin" && !secretKey.trim()) {
+    if (role === "admin" && !secretKey.trim()) {
       newErrors.secretKey = "*Secret key is required for admin";
       isValid = false;
     }
@@ -95,25 +95,34 @@ function SignupSignin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      try {
-        const userData = { name, email, password, userType };
-        if (userType === "admin") {
-          userData.secretKey = secretKey;
-        }
-        const response = await axios.post('http://localhost:3001/api/signup', userData);
-        console.log(response.data);
-        navigate('/signin');
-        formRef.current.reset();
-        setName('');
-        setEmail('');
-        setPassword('');
-        setTermsAccepted(false);
-        setUserType('');
-        setSecretKey('');
-      } catch (error) {
-        console.error(error);
-        alert('Error signing up');
+      if(role === 'admin' && secretKey!='RaktDaan@0987'){
+        alert('Invalid secret key');
       }
+      else{
+        try {
+          console.log({name, email, password, role});
+          let result = await fetch('http://localhost:3001/', {
+            method: 'POST',
+            body: JSON.stringify({name, email, password, role}),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          result = await result.json();
+          console.log(result);
+          navigate('/signin');
+          formRef.current.reset();
+          setName('');
+          setEmail('');
+          setPassword('');
+          setTermsAccepted(false);
+          setRole('user');
+        } catch (error) {
+          console.error(error);
+          alert('Error signing up');
+        }
+      }
+      
     }
   };
 
@@ -131,17 +140,10 @@ function SignupSignin() {
         <h1>Create Account</h1>
         <div>
           Register As
-          <input type="radio" name="UserType" value="user" onChange={(e) => setUserType(e.target.value)} />User
-          <input type="radio" name="UserType" value="admin" onChange={(e) => setUserType(e.target.value)} />Admin
+          <input type="radio" name="role" value="user" onChange={(e) => setRole(e.target.value)} required />User
+          <input type="radio" name="role" value="admin" onChange={(e) => setRole(e.target.value)} required />Admin
         </div>
-        <div className='btn'>
-          <GoogleButton 
-            style={{background:"white", color:"grey", width:400}} 
-            onClick={() => login()}
-          />
-        </div>
-        <span className='span'>or use your email for registration</span>
-        {userType === "admin" && (
+        {role === "admin" ? (
           <input 
             type="text" 
             name="secretKey" 
@@ -150,6 +152,16 @@ function SignupSignin() {
             value={secretKey} 
             onChange={(e) => setSecretKey(e.target.value)}
           />
+        ) : (
+          <>
+            <div className='btn'>
+              <GoogleButton 
+                style={{background:"white", color:"grey", width:400}} 
+                onClick={() => login()}
+              />
+            </div>
+            <span className='span'>or use your email for registration</span>
+          </>
         )}
         {errors.secretKey && <p className="error-message">{errors.secretKey}</p>}
         <input 

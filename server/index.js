@@ -10,8 +10,7 @@ const BloodAcc = require('./config/BloodAccepter')
 const BloodDonor = require('./config/BloodDonor')
 const BloodTest = require('./config/BloodTest')
 const google = require('./config/LoginWithGoogle')
-
-// const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 
 app.use(cors())
 
@@ -29,11 +28,12 @@ app.listen(port, (err) => {
 })
 
 app.post('/', async (req, res) => {
-    const { name, email, password } = req.body
+    const { name, email, password, role } = req.body
     const saveData = new user({
         name: name,
         email: email,
-        password: password
+        password: password,
+        role: role
     })
     try {
         const save = await saveData.save()
@@ -120,32 +120,51 @@ app.post('/bloodacc', async (req, res) => {
     }
 })
 
-app.post('/blooddon',async(req,res)=>{
-    try{
-        const {bloodtype,blooddonate,fname,lname,dob,contact,email,gender,donated,extra} = req.body;
-        const fullname = {fname, lname};
+app.post('/blooddon', async (req, res) => {
+    try {
+        const { bloodtype, blooddonate, fname, lname, dob, contact, email, gender, donated} = req.body;
+        const fullname = { fname, lname };
+
         if (!bloodtype || !fname || !lname || !dob || !contact || !email || !gender) {
             return res.status(400).json({ message: 'All fields are required' });
-          }
-        const saveData = new BloodDonor({
-            bloodtype,
-            blooddonate,
-            fullname,
-            dob,
-            contact,
-            email,
-            gender,
-            donated,
-            extra
+        }
+
+        // Check if donor already exists
+        let donor = await BloodDonor.findOne({ email: email });
+
+        if (donor) {
+            // If donor exists, update their information
+            donor.blooddonate += parseInt(blooddonate); // Add new donation amount
+            donor.donated = donated; // Update donation status
+            // Update other fields if needed
+            donor.bloodtype = bloodtype;
+            donor.fullname = fullname;
+            donor.dob = dob;
+            donor.contact = contact;
+            donor.gender = gender;
+
+            await donor.save();
+            res.status(200).json({ message: 'Blood donor data updated successfully' });
+        } else {
+            // If donor doesn't exist, create a new entry
+            const newDonor = new BloodDonor({
+                bloodtype,
+                blooddonate: parseInt(blooddonate),
+                fullname,
+                dob,
+                contact,
+                email,
+                gender,
+                donated,
             });
-            await saveData.save()
-            res.status(201).json({message:'Blood donor data saved sucessfully'});
-            }
-            catch(error){
-                console.log(chalk.inverse.red(error));
-                res.status(500).send({message:'Error occurred while saving data'});
-            }
-})
+            await newDonor.save();
+            res.status(201).json({ message: 'Blood donor data saved successfully' });
+        }
+    } catch (error) {
+        console.log(chalk.inverse.red(error));
+        res.status(500).send({ message: 'Error occurred while saving data' });
+    }
+});
 
 app.post('/bloodtest',async(req,res)=>{
     try{

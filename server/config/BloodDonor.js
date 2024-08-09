@@ -39,10 +39,6 @@ const DonorSchema = new mongoose.Schema({
     donated:{
         type:Boolean,
         default:false,
-    },
-    extra:{
-        type: [String],
-        default: []
     }
 })
 
