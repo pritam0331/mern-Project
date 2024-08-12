@@ -10,20 +10,14 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import SignupSignin from './components/Signup/SignupSignin'
 import Signin from './components/Signin/Signin'
 import Footer from './components/Footer/Footer'
-// import TermsandCond from './components/Termsandcondition/Termsandcond'
 import PrivacyAndPolicy from './components/PrivacyAndPolicy/PrivacyAndPolicy'
-
-// import Forgot from './components/Form3/Forgot'
-
 import ForgetPassword from './components/Password/ForgetPassword'
 import BloodAcceptor from './components/BloodAcceptor/BloodAcceptor'
 import PrivatePortal from './components/PrivacyPortal/PrivatePortal'
 import Doner from './components/Doner/Doner'
 import BloodTest from './components/BloodTest/BloodTest'
-
 import VerifyOtp from './components/VerifyOtp/VerifyOtp'
 import ConfirmPassword from './components/ConfirmPassword/ConfirmPassword'
-
 import Termsandcond from './components/Termsandcondition/Termsandcond'
 
 
