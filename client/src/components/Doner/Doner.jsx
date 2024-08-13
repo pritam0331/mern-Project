@@ -1,21 +1,21 @@
-import React, { useState } from 'react'
-import "./Doner.css"
+import React, { useState } from 'react';
+import './Doner.css';
 
 function Doner() {
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
   const [dob, setDob] = useState('');
   const [bloodtype, setBloodType] = useState('');
-  const [blooddonate,setBloodDonate] = useState("1");
+  const [blooddonate, setBloodDonate] = useState('1');
   const [donated, setDonated] = useState(null);
   const [gender, setGender] = useState('');
   const [contact, setContact] = useState('');
   const [email, setEmail] = useState('');
   const [errors, setErrors] = useState({});
-  
+
   const validateForm = () => {
     let formErrors = {};
-    
+
     if (!bloodtype) formErrors.bloodtype = "*Please select a blood type";
     if (!fname.trim()) formErrors.fname = "*First name is required";
     if (!lname.trim()) formErrors.lname = "*Last name is required";
@@ -33,11 +33,11 @@ function Doner() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(validateForm()){
+    if (validateForm()) {
       try {
         const response = await fetch('http://localhost:3001/blooddon', {
           method: 'POST',
-          body: JSON.stringify({ bloodtype,blooddonate, fname, lname, dob, contact, email, gender, donated}),
+          body: JSON.stringify({ bloodtype, blooddonate, fname, lname, dob, contact, email, gender, donated }),
           headers: {
             'Content-Type': 'application/json'
           }
@@ -57,10 +57,10 @@ function Doner() {
   return (
     <div>
       <div className="form-container-doner">
-        <h1 className='med-doner'>Medical Blood Donation Consent Form</h1>
+        <h1 className="med-doner">Medical Blood Donation Consent Form</h1>
         <form onSubmit={handleSubmit}>
-          <div className='bigCon-doner'>
-            <p className='type-doner'>What is your blood type?</p>
+          <div className="bigCon-doner">
+            <p className="type-doner">What is your blood type?</p>
             <div className="container-doner">
               {bloodTypes.map((type) => (
                 <div key={type} className="option-doner">
@@ -73,11 +73,11 @@ function Doner() {
                     onChange={(e) => setBloodType(e.target.value)} 
                     checked={bloodtype === type}
                   />
-                  <label htmlFor={type}>{type}</label>
+                  <label htmlFor={type} className="radio-label">{type}</label>
                 </div>
               ))}
             </div>
-            {errors.bloodtype && <span className='error'>{errors.bloodtype}</span>}
+            {errors.bloodtype && <span className="error">{errors.bloodtype}</span>}
           </div>
 
           <div className="blood-doner">
@@ -97,27 +97,65 @@ function Doner() {
             </select>
           </div>
 
-          <label htmlFor="first-name">Name:</label>
-          <div>
+          <label htmlFor="first-name" className="name-label">Name:</label>
           <div className="name-field-doner">
-            <input type="text" id="first-name" name="first-name" placeholder="First" className="text-doner" value={fname} onChange={(e) => setFname(e.target.value)}/>
-            <input type="text" id="last-name" name="last-name" placeholder="Last" className="text-doner" value={lname} onChange={(e) => setLname(e.target.value)}/>
+            <input 
+              type="text" 
+              id="first-name" 
+              name="first-name" 
+              placeholder="First" 
+              className="text-doner" 
+              value={fname} 
+              onChange={(e) => setFname(e.target.value)}
+            />
+            <input 
+              type="text" 
+              id="last-name" 
+              name="last-name" 
+              placeholder="Last" 
+              className="text-doner" 
+              value={lname} 
+              onChange={(e) => setLname(e.target.value)}
+            />
           </div>
-          <div className='errors'>
+          <div className="errors">
             {errors.fname && <span className="error2">{errors.fname}</span>}
             {errors.lname && <span className="error2">{errors.lname}</span>}
-            </div>
           </div>
-          <label htmlFor="dob">Date of Birth:</label>
-          <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY" className="date-doner" value={dob} onChange={(e) => setDob(e.target.value)}/>
+
+          <label htmlFor="dob" className="dob-label">Date of Birth:</label>
+          <input 
+            type="date" 
+            id="dob" 
+            name="dob" 
+            className="date-doner" 
+            value={dob} 
+            onChange={(e) => setDob(e.target.value)}
+          />
           {errors.dob && <span className="error">{errors.dob}</span>}
           
-          <label htmlFor="phone">Phone number:</label>
-          <input type="tel" id="phone" name="phone" placeholder="xxxxx-xxxxx" className="tel-doner" value={contact} onChange={(e) => setContact(e.target.value)}/>
+          <label htmlFor="phone" className="phone-label">Phone number:</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            placeholder="xxxxx-xxxxx" 
+            className="tel-doner" 
+            value={contact} 
+            onChange={(e) => setContact(e.target.value)}
+          />
           {errors.contact && <span className="error">{errors.contact}</span>}
           
-          <label htmlFor="email">Email address:</label>
-          <input type="email" id="email" name="email" placeholder="Email address" className="email-doner" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <label htmlFor="email" className="email-label">Email address:</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="Email address" 
+            className="email-doner" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)}
+          />
           {errors.email && <span className="error">{errors.email}</span>}
           
           <legend className="legend-doner">Gender</legend>
@@ -133,13 +171,13 @@ function Doner() {
                   onChange={(e) => setGender(e.target.value)} 
                   checked={gender === genderOption}
                 />
-                <label htmlFor={genderOption.toLowerCase()}>{genderOption}</label>
+                <label htmlFor={genderOption.toLowerCase()} className="radio-label">{genderOption}</label>
               </div>
             ))}
           </div>
           {errors.gender && <span className="error">{errors.gender}</span>}
           
-          <label className='prev-doner'>Have you donated previously?</label>
+          <label className="prev-doner">Have you donated previously?</label>
           <div className="radio-group-doner">
             {['Yes', 'No'].map((option) => (
               <div key={option}>
@@ -151,19 +189,19 @@ function Doner() {
                   onChange={() => setDonated(option === 'Yes')}
                   checked={donated === (option === 'Yes')}
                 />
-                <label htmlFor={`donated-${option.toLowerCase()}`}>{option}</label>
+                <label htmlFor={`donated-${option.toLowerCase()}`} className="radio-label">{option}</label>
               </div>
             ))}
           </div>
           {errors.donated && <span className="error">{errors.donated}</span>}
           
-          <div className='submitt-doner'>
+          <div className="submitt-doner">
             <input type="submit" className="submit-doner" />
           </div>
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default Doner
+export default Doner;
