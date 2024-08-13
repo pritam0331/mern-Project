@@ -15,6 +15,29 @@ const nodemailer = require('nodemailer');
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+const express = require('express')
+const app = express()
+const port = 3001
+const chalk = require('chalk')
+require('./config/dbConn')
+const user = require('./config/User')
+const cors = require('cors')
+const bodyparser = require('body-parser')
+const BloodAcc = require('./config/BloodAccepter')
+const BloodDonor = require('./config/BloodDonor')
+const BloodTest = require('./config/BloodTest')
+const google = require('./config/LoginWithGoogle')
+const adminRoute = require('./router/admin-router')
+const Contact = require('./config/Contact')
+// const bcrypt = require('bcrypt')
+
+app.use("/api/admin", adminRoute);
+
+app.use(cors())
+
+app.use(express.json())
+
+app.use(bodyparser.json())
 
 app.listen(port, (err) => {
     if (err) {
@@ -28,7 +51,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'RaaktDaann@gmail.com',
-        pass: 'vsmi saww yflw tchh',  // Consider storing this in an environment variable for security
+        pass: 'vsmi saww yflw tchh',
     }
 });
 
@@ -183,3 +206,23 @@ app.post('/api/google-login', async (req, res) => {
         res.status(500).json({ message: 'Error occurred during Google login' });
     }
 });
+    res.status(200).json(user);
+  });
+
+  app.post('/contact', async (req, res) => {
+    try {
+      const { firstname, lastname, email, phone, message } = req.body;
+      const fullname = {firstname,lastname};
+      const saveData = new Contact({
+        fullname,
+        email,
+        phone,
+        message,
+      });
+      await saveData.save();
+      res.status(201).json({ alert: 'Contact form data saved successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ alert: 'Error occurred while saving data' });
+    }
+  });
