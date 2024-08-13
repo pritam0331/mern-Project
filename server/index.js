@@ -10,7 +10,11 @@ const BloodAcc = require('./config/BloodAccepter')
 const BloodDonor = require('./config/BloodDonor')
 const BloodTest = require('./config/BloodTest')
 const google = require('./config/LoginWithGoogle')
-const bcrypt = require('bcrypt')
+const adminRoute = require('./router/admin-router')
+const Contact = require('./config/Contact')
+// const bcrypt = require('bcrypt')
+
+app.use("/api/admin", adminRoute);
 
 app.use(cors())
 
@@ -191,4 +195,22 @@ app.post('/api/google-login', async (req, res) => {
       await user.save();
     }
     res.status(200).json(user);
+  });
+
+  app.post('/contact', async (req, res) => {
+    try {
+      const { firstname, lastname, email, phone, message } = req.body;
+      const fullname = {firstname,lastname};
+      const saveData = new Contact({
+        fullname,
+        email,
+        phone,
+        message,
+      });
+      await saveData.save();
+      res.status(201).json({ alert: 'Contact form data saved successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ alert: 'Error occurred while saving data' });
+    }
   });
