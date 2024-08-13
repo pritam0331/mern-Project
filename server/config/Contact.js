@@ -18,6 +18,7 @@ const ContactSchema= new mongoose.Schema({
     phone:{
         type:Number,
         required:true,
+        unique:true
     },
     message:{
         type:String,
@@ -25,4 +26,5 @@ const ContactSchema= new mongoose.Schema({
     }
 })
 
-module.exports=mongoose.model('Contact',ContactSchema);
+
+module.exports=mongoose.model('Contact',ContactSchema); 

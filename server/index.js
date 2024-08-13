@@ -1,3 +1,20 @@
+const express = require('express');
+const app = express();
+const port = 2003;
+const chalk = require('chalk');
+require('./config/dbConn');
+const User = require('./config/User');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const BloodAcc = require('./config/BloodAccepter');
+const BloodDonor = require('./config/BloodDonor');
+const BloodTest = require('./config/BloodTest');
+const Contact = require('./config/Contact');
+const nodemailer = require('nodemailer');
+
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
 const express = require('express')
 const app = express()
 const port = 3001
@@ -24,123 +41,80 @@ app.use(bodyparser.json())
 
 app.listen(port, (err) => {
     if (err) {
-        console.log(chalk.inverse.red(err))
+        console.log(chalk.inverse.red(err));
+    } else {
+        console.log(chalk.inverse.green(`Server is running on port ${port}`));
     }
-    else {
-        console.log(chalk.inverse.green(`Server is running on port ${port}`))
+});
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'RaaktDaann@gmail.com',
+        pass: 'vsmi saww yflw tchh',
     }
-})
+});
 
 app.post('/', async (req, res) => {
-    const { name, email, password, role } = req.body
-    const saveData = new user({
-        name: name,
-        email: email,
-        password: password,
-        role: role
-    })
+    const { name, email, password, role } = req.body;
+
     try {
-        const save = await saveData.save()
-        res.send(save)
+        const newUser = new User({ name, email, password, role });
+        const savedUser = await newUser.save();
+        res.status(201).json(savedUser);
     } catch (error) {
-        console.log(chalk.inverse.red(error))
+        console.log(chalk.inverse.red('Error saving user:', error));
+        res.status(500).json({ message: 'Error saving user data' });
     }
-})
+});
 
-// Route for email check
-//   app.post('/check-email', async (req, res) => {
-//     const { email } = req.body;
-
-//     try {
-//       const user = await user.findOne({ email });
-
-//       if (user) {
-//         res.status(200).send({ message: 'Email found, proceed to password' });
-//       } else {
-//         res.status(400).send({ message: 'Invalid email' });
-//       }
-//     } catch (error) {
-//       res.status(500).send({ message: 'An error occurred', error });
-//     }
-//   });
-
-//   // Route for password check
-//   app.post('/login', async (req, res) => {
-//     const { email, password } = req.body;
-
-//     try {
-//       const user = await user.findOne({ email });
-
-//       if (user) {
-//         if (user.password === password) {
-//           res.status(200).send({ message: 'Successfully logged in' });
-//         } else {
-//           res.status(400).send({ message: 'Incorrect password' });
-//         }
-//       } else {
-//         res.status(400).send({ message: 'Invalid email' });
-//       }
-//     } catch (error) {
-//       res.status(500).send({ message: 'An error occurred', error });
-//     }
-//   });
-
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    user.findOne({ email: email })
-    .then(user =>{
-        if(user){
-            if(user.password === password)
-            {
-                res.send('success')
+
+    try {
+        const user = await User.findOne({ email });
+        if (user) {
+            if (user.password === password) {
+                res.status(200).send('success');
+            } else {
+                res.status(400).send('password incorrect');
             }
-            else{
-                res.send('password incorrect')
-               }   }
-            else{
-                res.send('you have to register before login')
-            }
-    })
-})
+        } else {
+            res.status(400).send('you have to register before login');
+        }
+    } catch (error) {
+        console.log(chalk.inverse.red('Error during login:', error));
+        res.status(500).json({ message: 'An error occurred during login' });
+    }
+});
 
 app.post('/bloodacc', async (req, res) => {
     try {
-    const { bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email } = req.body;
-    const fullname = {fname,lname};
-    const saveData = new BloodAcc({
-        bloodtype,
-        bloodneed,
-        fullname,
-        dob,
-        gender,
-        phoneno,
-        email,
-    });
-        await saveData.save()
+        const { bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email } = req.body;
+        const fullname = { fname, lname };
+        const newBloodAcc = new BloodAcc({ bloodtype, bloodneed, fullname, dob, gender, phoneno, email });
+        await newBloodAcc.save();
         res.status(201).json({ message: 'Blood acceptor data saved successfully' });
     } catch (error) {
-        console.log(chalk.inverse.red(error))
-        res.status(500).send({ message: 'Error occurred while saving data' })
+        console.log(chalk.inverse.red('Error saving blood acceptor data:', error));
+        res.status(500).json({ message: 'Error occurred while saving data' });
     }
-})
+});
 
 app.post('/blooddon', async (req, res) => {
     try {
-        const { bloodtype, blooddonate, fname, lname, dob, contact, email, gender, donated} = req.body;
+        const { bloodtype, blooddonate, fname, lname, dob, contact, email, gender, donated, extra } = req.body;
         const fullname = { fname, lname };
 
         if (!bloodtype || !fname || !lname || !dob || !contact || !email || !gender) {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
-        // Check if donor already exists
         let donor = await BloodDonor.findOne({ email: email });
 
         if (donor) {
-            // If donor exists, update their information
-            donor.blooddonate += parseInt(blooddonate); // Add new donation amount
-            donor.donated = donated; // Update donation status
-            // Update other fields if needed
+            donor.blooddonate += parseInt(blooddonate);
+            donor.donated = donated;
             donor.bloodtype = bloodtype;
             donor.fullname = fullname;
             donor.dob = dob;
@@ -150,7 +124,6 @@ app.post('/blooddon', async (req, res) => {
             await donor.save();
             res.status(200).json({ message: 'Blood donor data updated successfully' });
         } else {
-            // If donor doesn't exist, create a new entry
             const newDonor = new BloodDonor({
                 bloodtype,
                 blooddonate: parseInt(blooddonate),
@@ -160,40 +133,79 @@ app.post('/blooddon', async (req, res) => {
                 email,
                 gender,
                 donated,
+                extra,
             });
             await newDonor.save();
             res.status(201).json({ message: 'Blood donor data saved successfully' });
         }
     } catch (error) {
-        console.log(chalk.inverse.red(error));
-        res.status(500).send({ message: 'Error occurred while saving data' });
+        console.log(chalk.inverse.red('Error saving blood donor data:', error));
+        res.status(500).json({ message: 'Error occurred while saving data' });
     }
 });
 
-app.post('/bloodtest',async(req,res)=>{
-    try{
-        const {fname,lname,email,phno,prefDate,appTime,addComment} = req.body
-        const fullname = {fname,lname}
-        const saveData = new BloodTest({
-            fullname,email,phno,prefDate,appTime,addComment
-        })
-        await saveData.save()
-        res.status(201).json({message:'Blood Test data save sucessfully'})
+app.post('/bloodtest', async (req, res) => {
+    try {
+        const { fname, lname, email, phno, prefDate, appTime, addComment } = req.body;
+        const fullname = { fname, lname };
+        const newBloodTest = new BloodTest({ fullname, email, phno, prefDate, appTime, addComment });
+        await newBloodTest.save();
+        res.status(201).json({ message: 'Blood test data saved successfully' });
+    } catch (error) {
+        console.log(chalk.inverse.red('Error saving blood test data:', error));
+        res.status(500).json({ message: 'Error occurred while saving data' });
     }
-    catch(error){
-        console.log(chalk.inverse.red(error))
-        res.status(500).send({message:'Error occured while saving data'})
-    }
-})
+});
 
+app.post('/contact', async (req, res) => {
+    try {
+        const { fullname, email, phone, message } = req.body;
+        const { firstname, lastname } = fullname;
+
+        const newContact = new Contact({ fullname, email, phone, message });
+        await newContact.save();
+
+        const mailOptions = {
+            from: 'RaaktDaann@gmail.com',
+            to: email,
+            subject: 'Welcome to Rakt Daan',
+            text: `Dear ${firstname} ${lastname},
+
+\n\nThank you for getting in touch with us. We appreciate your effort and look forward to helping those in need.
+
+Best regards,
+Rakt Daan Team`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(chalk.red('Error sending email:', error));
+                return res.status(500).json({ alert: 'Data saved, but error occurred while sending email.' });
+            }
+            console.log('Email sent:', info.response);
+            res.status(201).json({ alert: 'Contact form data saved and email sent successfully' });
+        });
+
+    } catch (error) {
+        console.log(chalk.inverse.red('Error saving contact form data:', error));
+        res.status(500).json({ alert: 'Error occurred while saving data' });
+    }
+});
 
 app.post('/api/google-login', async (req, res) => {
     const { googleId, email, name, profilePic } = req.body;
-    let user = await google.findOne({ googleId });
-    if (!user) {
-      user = new google({ googleId, email, name, profilePic });
-      await user.save();
+    try {
+        let user = await User.findOne({ googleId });
+        if (!user) {
+            user = new User({ googleId, email, name, profilePic });
+            await user.save();
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        console.log(chalk.inverse.red('Error during Google login:', error));
+        res.status(500).json({ message: 'Error occurred during Google login' });
     }
+});
     res.status(200).json(user);
   });
 
