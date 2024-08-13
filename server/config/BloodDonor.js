@@ -4,6 +4,10 @@ const DonorSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    blooddonate:{
+        type:Number,
+        required:true
+    },
     fullname:{
         fname:{
             type:String,
@@ -35,10 +39,6 @@ const DonorSchema = new mongoose.Schema({
     donated:{
         type:Boolean,
         default:false,
-    },
-    extra:{
-        type: [String],
-        default: []
     }
 })
 

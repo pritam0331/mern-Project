@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GoogleButton from 'react-google-button';
 import { useNavigate } from 'react-router-dom';
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import './Signin.css';
 import AOS from 'aos';
@@ -29,17 +29,24 @@ function Signin() {
         }
       })
         .then((res) => {
-          setProfile(res.data);
+          const profileData = {
+            googleId: res.data.id,
+            email: res.data.email,
+            name: res.data.name,
+            profilePic: res.data.picture
+          };
+          setProfile(profileData);
+          // Send profile data to backend
+          axios.post('http://localhost:3001/api/google-login', profileData)
+            .then(() => {
+              localStorage.setItem('user', JSON.stringify(profileData));
+              navigate('/');
+            })
+            .catch((err) => console.log(err));
         })
         .catch((err) => console.log(err));
     }
-  }, [user]);
-
-  const logOut = () => {
-    googleLogout();
-    setProfile(null);
-    setUser(null);
-  };
+  }, [user, navigate]);
 
   const validateForm = () => {
     let isValid = true;
@@ -91,40 +98,37 @@ function Signin() {
   }, []);
 
   return (
-    <div className="signin-container" data-aos="zoom-in">
-      <form className='signin-form' onSubmit={handleSubmit}>
+    <div className="signin-container">
+      <div className="signin-form" data-aos="fade-up">
         <h1>Sign In</h1>
-
-        <div id='btn1'>
-          <GoogleButton style={{ background: "white", color: "grey", width: 400 }} onClick={() => login()} />
+        <div id="btn1" onClick={() => login()}>
+          <GoogleButton  style={{background:"white", color:"grey", width:400}}/>
         </div>
-
-        <span className='span'>or use your account</span>
-
-        <input 
-          type="email" 
-          placeholder="Email" 
-          className={`input-field ${errors.email ? 'error' : ''}`}
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-        />
-        {errors.email && <p className="error-message">{errors.email}</p>}
-
-        <input 
-          type="password" 
-          placeholder="Password" 
-          className={`input-field ${errors.password ? 'error' : ''}`}
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-        />
-        {errors.password && <p className="error-message">{errors.password}</p>}
-
-        <a href="/forgetpass" className="forgot-password">Forgot Your Password</a>
-
-        <button type="submit" className="signin-button">SIGN IN</button>
-        {errors.general && <p className="error-message1">{errors.general}</p>}
-        <p className="signin-link">Don't have an account? <a href="/signup">Sign up</a></p>
-      </form>
+        <span className="span">or use your account</span>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            className={`input-field ${errors.email ? 'error' : ''}`}
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errors.email && <div className="error-message1">{errors.email}</div>}
+          <input
+            type="password"
+            className={`input-field ${errors.password ? 'error' : ''}`}
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {errors.password && <div className="error-message1">{errors.password}</div>}
+          <button type="submit" className="signin-button">SIGN IN</button>
+          {errors.general && <div className="error-message1">{errors.general}</div>}
+        </form>
+        <div className="signin-link">
+          Don't have an account? <a href="/signup">Sign up</a>
+        </div>
+      </div>
     </div>
   );
 }

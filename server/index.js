@@ -28,14 +28,15 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'RaaktDaann@gmail.com',
-        pass: 'vsmi saww yflw tchh',
+        pass: 'vsmi saww yflw tchh',  // Consider storing this in an environment variable for security
     }
 });
 
 app.post('/', async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
+
     try {
-        const newUser = new User({ name, email, password });
+        const newUser = new User({ name, email, password, role });
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (error) {
@@ -46,6 +47,7 @@ app.post('/', async (req, res) => {
 
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
+
     try {
         const user = await User.findOne({ email });
         if (user) {
@@ -78,14 +80,41 @@ app.post('/bloodacc', async (req, res) => {
 
 app.post('/blooddon', async (req, res) => {
     try {
-        const { bloodtype, fname, lname, dob, contact, email, gender, donated, extra } = req.body;
+        const { bloodtype, blooddonate, fname, lname, dob, contact, email, gender, donated, extra } = req.body;
         const fullname = { fname, lname };
+
         if (!bloodtype || !fname || !lname || !dob || !contact || !email || !gender) {
             return res.status(400).json({ message: 'All fields are required' });
         }
-        const newBloodDonor = new BloodDonor({ bloodtype, fullname, dob, contact, email, gender, donated, extra });
-        await newBloodDonor.save();
-        res.status(201).json({ message: 'Blood donor data saved successfully' });
+
+        let donor = await BloodDonor.findOne({ email: email });
+
+        if (donor) {
+            donor.blooddonate += parseInt(blooddonate);
+            donor.donated = donated;
+            donor.bloodtype = bloodtype;
+            donor.fullname = fullname;
+            donor.dob = dob;
+            donor.contact = contact;
+            donor.gender = gender;
+
+            await donor.save();
+            res.status(200).json({ message: 'Blood donor data updated successfully' });
+        } else {
+            const newDonor = new BloodDonor({
+                bloodtype,
+                blooddonate: parseInt(blooddonate),
+                fullname,
+                dob,
+                contact,
+                email,
+                gender,
+                donated,
+                extra,
+            });
+            await newDonor.save();
+            res.status(201).json({ message: 'Blood donor data saved successfully' });
+        }
     } catch (error) {
         console.log(chalk.inverse.red('Error saving blood donor data:', error));
         res.status(500).json({ message: 'Error occurred while saving data' });
@@ -112,13 +141,14 @@ app.post('/contact', async (req, res) => {
 
         const newContact = new Contact({ fullname, email, phone, message });
         await newContact.save();
+
         const mailOptions = {
             from: 'RaaktDaann@gmail.com',
             to: email,
             subject: 'Welcome to Rakt Daan',
             text: `Dear ${firstname} ${lastname},
 
-Thank you for getting in touch with us. We appreciate your effort and look forward to helping those in need.
+\n\nThank you for getting in touch with us. We appreciate your effort and look forward to helping those in need.
 
 Best regards,
 Rakt Daan Team`
@@ -136,5 +166,20 @@ Rakt Daan Team`
     } catch (error) {
         console.log(chalk.inverse.red('Error saving contact form data:', error));
         res.status(500).json({ alert: 'Error occurred while saving data' });
+    }
+});
+
+app.post('/api/google-login', async (req, res) => {
+    const { googleId, email, name, profilePic } = req.body;
+    try {
+        let user = await User.findOne({ googleId });
+        if (!user) {
+            user = new User({ googleId, email, name, profilePic });
+            await user.save();
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        console.log(chalk.inverse.red('Error during Google login:', error));
+        res.status(500).json({ message: 'Error occurred during Google login' });
     }
 });

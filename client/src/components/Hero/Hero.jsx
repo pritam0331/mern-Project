@@ -29,7 +29,7 @@ function Hero() {
         {auth ? (<div className='Hero-buttons'>
           <button className='Hero-button1' onClick={() => handleNavigate('/find-donor')}>Find Donor</button>
           <button className='Hero-button1' onClick={() => handleNavigate('/donate-blood')}>Donate Blood</button>
-          <button className='Hero-button1' onClick={() => handleNavigate('/test-blood')}>Test Blood</button>
+          <button className='Hero-button1' onClick={() => handleNavigate('/blood-test')}>Test Blood</button>
           </div>
         ) : (
           <>

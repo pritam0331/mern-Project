@@ -12,7 +12,12 @@ const UserSchema = mongoose.Schema({
     password:{
         type:String,
         required:[true,'password is required']
-    }
+    },
+    role:{
+        type:String,
+        enum:['admin','user'],
+        default:'user'
+        }
 })
 
 module.exports = mongoose.model('signup',UserSchema)
