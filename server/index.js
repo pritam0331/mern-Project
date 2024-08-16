@@ -95,7 +95,7 @@ app.post('/bloodacc', async (req, res) => {
     let responseMessage = ''
 
     if (!bltype) {
-        return res.status(404).json({ message: 'Blood type not found in our database' });
+        return res.status(404).json({ message: 'Sorry! Entered Blood Type is not Available' });
     }
 
     // Check if the requested amount is less than or equal to the available amount

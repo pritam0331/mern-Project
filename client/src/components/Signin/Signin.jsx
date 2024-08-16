@@ -6,6 +6,7 @@ import axios from 'axios';
 import './Signin.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function Signin() {
   const [user, setUser] = useState(null);
@@ -14,6 +15,7 @@ function Signin() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
@@ -102,7 +104,7 @@ function Signin() {
       <div className="signin-form" data-aos="fade-up">
         <h1>Sign In</h1>
         <div id="btn1" onClick={() => login()}>
-          <GoogleButton  style={{background:"white", color:"grey", width:400}}/>
+          <GoogleButton style={{ background: "white", color: "grey", width: 400 }} />
         </div>
         <span className="span">or use your account</span>
         <form onSubmit={handleSubmit}>
@@ -114,14 +116,23 @@ function Signin() {
             onChange={(e) => setEmail(e.target.value)}
           />
           {errors.email && <div className="error-message1">{errors.email}</div>}
-          <input
-            type="password"
-            className={`input-field ${errors.password ? 'error' : ''}`}
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {errors.password && <div className="error-message1">{errors.password}</div>}
+          <div className="password-input-container">
+            <input
+              type={showPassword ? "text" : "password"}
+              className={`input-field ${errors.password ? 'error' : ''}`}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+            {errors.password && <div className="error-message1">{errors.password}</div>}
+          </div>
           <button type="submit" className="signin-button">SIGN IN</button>
           {errors.general && <div className="error-message1">{errors.general}</div>}
         </form>

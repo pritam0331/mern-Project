@@ -118,6 +118,40 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+/* Signin.css */
+.password-input-container {
+  position: relative;
+}
+
+.input-field {
+  width: 100%;
+  padding-right: 40px; /* Adjust to make space for the eye icon */
+}
+
+.toggle-password {
+  position: absolute;
+  top: 37%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: #f8f8f8;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px; /* To match the square shape in the provided image */
+  cursor: pointer;
+}
+
+.toggle-password svg {
+  width: 20px;
+  height: 20px;
+  color: grey; /* Adjust to match the color in the image */
+}
+
+.toggle-password:hover{
+  background-color: transparent;
+  box-shadow: none;
+}
+
+
 @media (max-width: 480px) {
   .signin-form {
     padding: 1.5rem;
