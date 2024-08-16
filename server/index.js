@@ -44,7 +44,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'RaaktDaann@gmail.com',
-        pass: 'vsmi saww yflw tchh',
+        pass: 'txiw unyb rbrk xvhx',
     }
 });
 
@@ -100,7 +100,7 @@ app.post('/bloodacc', async (req, res) => {
 
     // Check if the requested amount is less than or equal to the available amount
     if (parseInt(bloodneed) > bltype.Quantity) {
-        return res.status(400).json({ message: 'Requested amount exceeds available quantity' });
+        return res.status(400).json({ message: 'Requested amount of blood exceeds available quantity' });
     }
 
     // Reduce the blood quantity in the TotalBlood collection
@@ -240,6 +240,34 @@ app.post('/bloodtest',async(req,res)=>{
         })
         await saveData.save()
         res.status(201).json({message:'Blood Test data save sucessfully'})
+        const mailOptions = {
+            from: 'RaaktDaann@gmail.com',
+            to: email,
+            subject: 'Your Appointment for Blood Test',
+            text: `Dear ${fname} ${lname},
+
+Thank you for booking your blood test with us. Here are the details of your appointment:
+
+- **Full Name**: ${fname} ${lname}
+- **Phone Number**: ${phno}
+- **Preferred Appointment Date**: ${prefDate}
+- **Preferred Appointment Time**: ${appTime}
+- **Amount of Blood Test**: ₹250
+
+We look forward to seeing you on the scheduled date. If you have any further questions or need to reschedule, feel free to reply to this email.
+
+Best regards,
+Rakt Daan Team`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(chalk.red('Error sending email:', error));
+                return res.status(500).json({ alert: 'Data saved, but error occurred while sending email.' });
+            }
+            console.log('Email sent:', info.response);
+            res.status(201).json({ alert: 'Contact form data saved and email sent successfully' });
+        });
     }
     catch(error){
         console.log(chalk.inverse.red(error))

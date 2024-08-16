@@ -14,16 +14,21 @@ function BloodAcceptor() {
 
   const validateForm = () => {
     let formErrors = {};
+    const currentYear = new Date().getFullYear();
+    const inputYear = new Date(dob).getFullYear();
     
     if (!bloodtype) formErrors.bloodtype = "*Please select a blood type";
     if (!fname.trim()) formErrors.fname = "*First name is required";
     if (!lname.trim()) formErrors.lname = "*Last name is required";
+    
     if (!dob) formErrors.dob = "*Date of birth is required";
+    else if (inputYear > currentYear) formErrors.dob = "*Year of birth cannot be in the future";
     if (!gender) formErrors.gender = "*Please select a gender";
     if (!phoneno.trim()) formErrors.phoneno = "*Phone number is required";
     else if (!/^\d{10}$/.test(phoneno)) formErrors.phoneno = "*Invalid phone number format";
     if (!email.trim()) formErrors.email = "*Email is required";
     else if (!/\S+@\S+\.\S+/.test(email)) formErrors.email = "*Invalid email format";
+
 
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
@@ -34,19 +39,23 @@ function BloodAcceptor() {
     if (validateForm()) {
       try {
         console.log({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email });
-        let result = await fetch('http://localhost:3001/bloodacc', {
+        let response = await fetch('http://localhost:3001/bloodacc', {
           method: 'POST',
           body: JSON.stringify({ bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email }),
           headers: {
             'Content-Type': 'application/json'
           }
         });
-        result = await result.json();
-        console.log(result);
-        alert("Successfully submitted");
-      } catch (error) {
+        let result = await response.json();
+        if(response.status == 404)
+          alert(result.message)
+        if(response.status == 400)
+          alert(result.message)
+        if(response.status == 200)
+          alert("Successfully submitted");
+      } catch (error) { 
         console.error(error);
-        alert('Error');
+        alert('An error occurred while submitting the data.');
       }
     }
   };
