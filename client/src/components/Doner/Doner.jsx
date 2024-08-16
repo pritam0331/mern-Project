@@ -16,21 +16,25 @@ function Doner() {
 
   const validateForm = () => {
     let formErrors = {};
-
+    const currentYear = new Date().getFullYear();
+    const inputYear = new Date(dob).getFullYear();
+  
     if (!bloodtype) formErrors.bloodtype = "*Please select a blood type";
     if (!fname.trim()) formErrors.fname = "*First name is required";
     if (!lname.trim()) formErrors.lname = "*Last name is required";
     if (!dob) formErrors.dob = "*Date of birth is required";
+    else if (inputYear > currentYear) formErrors.dob = "*Year of birth cannot be in the future";
     if (!gender) formErrors.gender = "*Please select a gender";
     if (!contact.trim()) formErrors.contact = "*Phone number is required";
     else if (!/^\d{10}$/.test(contact)) formErrors.contact = "*Invalid phone number format (should be xxxxx-xxxxx)";
     if (!email.trim()) formErrors.email = "*Email is required";
     else if (!/\S+@\S+\.\S+/.test(email)) formErrors.email = "*Invalid email format";
     if (donated === null) formErrors.donated = "*Please select a donation status";
-
+  
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
