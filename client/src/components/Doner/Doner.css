@@ -1,32 +1,17 @@
 .med-doner {
-    color: black;
+    color: #d9534f;
+    text-align: center;
 }
 
 .form-container-doner {
     margin: auto;
-    /* background-color: white; */
-    /* border: 1px solid #ddd; */
     padding: 20px;
-    /* border-radius: 8px; */
     width: 70%;
-    /* max-width: 40%; */
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-}
-
-.med-doner  {
-    color: #d9534f ;
-    text-align: center;
 }
 
 .logo-doner {
     display: block;
     margin: 0 auto 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
 }
 
 .text-doner,
@@ -43,10 +28,12 @@ label {
 .name-field-doner {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
+    width: 98%;
 }
 
 .name-field-doner .text-doner {
-max-width: 48.5%;
+    flex: 1;
 }
 
 .checkbox-group-doner {
@@ -54,36 +41,39 @@ max-width: 48.5%;
     flex-wrap: wrap;
     gap: 2%;
     margin-bottom: 20px;
-    margin-top: 5px;
+}
+
+.radio-group-doner > div {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .radio-group-doner {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
     margin-bottom: 15px;
-    margin-top: 5px;
-}
-
-.checkbox-doner {
-   
-    margin-right: 2px;
 }
 
 .container-doner {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .option-doner {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-
+    flex: 1 1 calc(50% - 10px);
+    margin-bottom: 10px;
 }
-.type-doner{
- margin-top: 10px;
- margin-bottom: 20px;
 
+.type-doner {
+    margin-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .legend-doner {
@@ -94,7 +84,7 @@ max-width: 48.5%;
 .gender-options-doner {
     display: flex;
     gap: 20px;
-    margin: auto;
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
@@ -108,14 +98,10 @@ max-width: 48.5%;
     margin: 0;
 }
 
-label {
-    margin: 0;
-}
-
 .submitt-doner {
     display: flex;
-    gap: 60%;
-    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
 .submit-doner,
@@ -134,18 +120,6 @@ label {
     color: white;
 }
 
-.brand-doner {
-    text-align: center;
-    font-size: 30px;
-    margin: auto;
-    margin-bottom: 20px;
-}
-
-.span1-doner {
-    color: red;
-    font-size: 30px;
-}
-
 .blood-label {
     display: block;
     margin-bottom: 10px;
@@ -157,83 +131,29 @@ label {
     width: 98%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid ;
+    border: 1px solid;
     border-radius: 4px;
     box-sizing: border-box;
-    height: 35px;
-   font-size: 13px;
+}
+Label Styles
+.radio-label,
+.name-label,
+.dob-label,
+.phone-label,
+.email-label,
+.prev-doner {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
 }
 
 
 .select-doner:focus {
     outline: none;
-    
 }
-.blood-doner{
+
+.blood-doner {
     margin-bottom: 10px;
 }
-
-@media screen {
-    .submitt-doner{
-       
-        flex-wrap: nowrap;
-      margin-right: 100vh;
-
-    
-    }
-    .checkbox-group-doner {
-        flex-wrap: wrap;
-        gap: 10px;
-      
-    }
-}
-
-@media (max-width: 950px) {
-    .form-container-doner {
-        max-width: 60%;
-    }
-    .name-field-doner .text-doner {
-        width: 45%;
-    }
-   
-   
-    .radio-group-doner {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    
-}
-
-@media (max-width: 650px) {
-    .form-container-doner {
-        max-width: 80%;
-    }
-    .name-field-doner .text-doner {
-        width: 100%;
-    }
-   
-    .radio-group-doner {
-        flex-wrap: wrap;
-        gap: 5px;
-    }
-}
-
-@media (max-width: 450px) {
-    .form-container-doner {
-        max-width: 90%;
-    }
-    .name-field-doner .text-doner {
-        width: 100%;
-    }
-    
-    .radio-group-doner {
-        flex-wrap: wrap;
-        gap: 2px;
-    }
-    
-    
-}
-
-
 

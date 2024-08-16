@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./Doner.css";
 
+
 function Doner() {
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
@@ -57,10 +58,10 @@ function Doner() {
   return (
     <div>
       <div className="form-container-doner">
-        <h1 className='med-doner'>Medical Blood Donation Consent Form</h1>
+        <h1 className="med-doner">Medical Blood Donation Consent Form</h1>
         <form onSubmit={handleSubmit}>
-          <div className='bigCon-doner'>
-            <p className='type-doner'>What is your blood type?</p>
+          <div className="bigCon-doner">
+            <p className="type-doner">What is your blood type?</p>
             <div className="container-doner">
               {bloodTypes.map((type) => (
                 <div key={type} className="option-doner">
@@ -73,11 +74,11 @@ function Doner() {
                     onChange={(e) => setBloodType(e.target.value)} 
                     checked={bloodtype === type}
                   />
-                  <label htmlFor={type}>{type}</label>
+                  <label htmlFor={type} className="radio-label">{type}</label>
                 </div>
               ))}
             </div>
-            {errors.bloodtype && <span className='error'>{errors.bloodtype}</span>}
+            {errors.bloodtype && <span className="error">{errors.bloodtype}</span>}
           </div>
 
           <div className="blood-doner">
@@ -134,12 +135,11 @@ function Doner() {
                   onChange={(e) => setGender(e.target.value)} 
                   checked={gender === genderOption}
                 />
-                <label htmlFor={genderOption.toLowerCase()}>{genderOption}</label>
+                <label htmlFor={genderOption.toLowerCase()} className="radio-label">{genderOption}</label>
               </div>
             ))}
           </div>
           {errors.gender && <span className="error">{errors.gender}</span>}
-
           <label className='prev-doner'>Have you donated previously?</label>
           <div className="radio-group-doner">
             {['Yes', 'No'].map((option) => (
@@ -152,12 +152,11 @@ function Doner() {
                   onChange={() => setDonated(option === 'Yes')}
                   checked={donated === (option === 'Yes')}
                 />
-                <label htmlFor={`donated-${option.toLowerCase()}`}>{option}</label>
+                <label htmlFor={`donated-${option.toLowerCase()}`} className="radio-label">{option}</label>
               </div>
             ))}
           </div>
           {errors.donated && <span className="error">{errors.donated}</span>}
-
           <div className='submitt-doner'>
             <input type="submit" className="submit-doner" />
           </div>
