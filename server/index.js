@@ -9,6 +9,7 @@ const bodyparser = require('body-parser')
 const BloodAcc = require('./config/BloodAccepter')
 const BloodDonor = require('./config/BloodDonor')
 const BloodTest = require('./config/BloodTest')
+const TotalBlood = require('./config/TotalBlood')
 const google = require('./config/LoginWithGoogle')
 const bcrypt = require('bcrypt')
 
@@ -103,6 +104,40 @@ app.post('/bloodacc', async (req, res) => {
     try {
     const { bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email } = req.body;
     const fullname = {fname,lname};
+    
+    if (!bloodtype || !fname || !lname || !dob || !bloodneed || !email || !gender || !phoneno) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    let taker = await BloodAcc.findOne({ email: email });
+    let bltype = await TotalBlood.findOne({ BloodType:bloodtype})
+    let responseMessage = ''
+
+    if (!bltype) {
+        return res.status(404).json({ message: 'Blood type not found in our database' });
+    }
+
+    // Check if the requested amount is less than or equal to the available amount
+    if (parseInt(bloodneed) > bltype.Quantity) {
+        return res.status(400).json({ message: 'Requested amount exceeds available quantity' });
+    }
+
+    // Reduce the blood quantity in the TotalBlood collection
+    const updatedQuantity = bltype.Quantity - parseInt(bloodneed);
+    await TotalBlood.updateOne(
+        { BloodType: bloodtype },
+        { $set: { Quantity: updatedQuantity } }
+    );
+
+    if(taker){
+        const updatedFields = {
+            bloodneed: taker.bloodneed + parseInt(bloodneed),
+        };
+
+        await BloodAcc.updateOne({ email: email }, { $set: updatedFields });
+
+        responseMessage += 'Blood accepter data updated successfully.';
+    }else{
     const saveData = new BloodAcc({
         bloodtype,
         bloodneed,
@@ -113,7 +148,10 @@ app.post('/bloodacc', async (req, res) => {
         email,
     });
         await saveData.save()
-        res.status(201).json({ message: 'Blood acceptor data saved successfully' });
+        responseMessage += 'Blood acceptor data saved successfully'
+    }
+    console.log(responseMessage)
+    res.status(200).send({ message: responseMessage });
     } catch (error) {
         console.log(chalk.inverse.red(error))
         res.status(500).send({ message: 'Error occurred while saving data' })
@@ -122,7 +160,7 @@ app.post('/bloodacc', async (req, res) => {
 
 app.post('/blooddon', async (req, res) => {
     try {
-        const { bloodtype, blooddonate, fname, lname, dob, contact, email, gender, donated} = req.body;
+        const { bloodtype, blooddonate, fname, lname, dob, contact, email, gender, donated } = req.body;
         const fullname = { fname, lname };
 
         if (!bloodtype || !fname || !lname || !dob || !contact || !email || !gender) {
@@ -132,19 +170,41 @@ app.post('/blooddon', async (req, res) => {
         // Check if donor already exists
         let donor = await BloodDonor.findOne({ email: email });
 
+        // Check if blood type already exists
+        let btype = await TotalBlood.findOne({ BloodType: bloodtype }) 
+
+        let responseMessage = ''
+
+        if(btype){
+            const updatedFields = {
+                Quantity: btype.Quantity + parseInt(blooddonate)
+            }
+            await TotalBlood.updateOne(
+                { BloodType: bloodtype },
+                { $inc: { Quantity: parseInt(blooddonate) } }
+            );    
+            await TotalBlood.updateOne({ BloodType:bloodtype }, { $set: updatedFields });        
+
+            responseMessage += 'Blood Type data updated successfully. ';
+        } else{
+            const btype = new TotalBlood({
+                BloodType: bloodtype,
+                Quantity: parseInt(blooddonate)
+            });
+            await btype.save();
+            responseMessage += 'Blood Quantity data saved successfully. ';
+        }
+
         if (donor) {
             // If donor exists, update their information
-            donor.blooddonate += parseInt(blooddonate); // Add new donation amount
-            donor.donated = donated; // Update donation status
-            // Update other fields if needed
-            donor.bloodtype = bloodtype;
-            donor.fullname = fullname;
-            donor.dob = dob;
-            donor.contact = contact;
-            donor.gender = gender;
+            const updatedFields = {
+                blooddonate: donor.blooddonate + parseInt(blooddonate),
+                donated: true
+            };
 
-            await donor.save();
-            res.status(200).json({ message: 'Blood donor data updated successfully' });
+            await BloodDonor.updateOne({ email: email }, { $set: updatedFields });
+
+            responseMessage += 'Blood donor data updated successfully.';
         } else {
             // If donor doesn't exist, create a new entry
             const newDonor = new BloodDonor({
@@ -158,13 +218,27 @@ app.post('/blooddon', async (req, res) => {
                 donated,
             });
             await newDonor.save();
-            res.status(201).json({ message: 'Blood donor data saved successfully' });
+            responseMessage += 'Blood donor data saved successfully.';
+            console.log(responseMessage)
+            res.status(200).send({ message: responseMessage });
         }
     } catch (error) {
         console.log(chalk.inverse.red(error));
         res.status(500).send({ message: 'Error occurred while saving data' });
     }
 });
+
+
+
+app.get('/blooddon', async (req, res) => {
+    const { email } = req.query;
+    try {
+      const user = await BloodDonor.find({ email });
+      res.json(user);
+    } catch (error) {
+      res.status(500).json({ error: 'Error checking user' });
+    }
+  })
 
 app.post('/bloodtest',async(req,res)=>{
     try{
