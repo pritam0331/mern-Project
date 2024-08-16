@@ -3,7 +3,7 @@ const app = express()
 const port = 3001
 const chalk = require('chalk')
 require('./config/dbConn')
-const user = require('./config/User')
+const User = require('./config/User')
 const cors = require('cors')
 const bodyparser = require('body-parser')
 const BloodAcc = require('./config/BloodAccepter')
@@ -13,8 +13,16 @@ const TotalBlood = require('./config/TotalBlood')
 const google = require('./config/LoginWithGoogle')
 const adminRoute = require('./router/admin-router')
 const Contact = require('./config/Contact')
+const path = require('path');
 const nodemailer = require('nodemailer');
 // const bcrypt = require('bcrypt')
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+});
 
 app.use("/api/admin", adminRoute);
 
@@ -42,9 +50,9 @@ const transporter = nodemailer.createTransport({
 
 app.post('/', async (req, res) => {
     const { name, email, password, role } = req.body;
-
+    const validRole = ['user', 'admin'].includes(role) ? role : 'user';
     try {
-        const newUser = new user({ name, email, password, role });
+        const newUser = new User({ name, email, password, role: validRole });
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (error) {
@@ -57,7 +65,7 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await user.findOne({ email });
+        const user = await User.findOne({ email });
         if (user) {
             if (user.password === password) {
                 res.status(200).send('success');

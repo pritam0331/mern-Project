@@ -15,7 +15,7 @@ function SignupSignin() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [termsAccepted, setTermsAccepted] = useState(false);
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("user");
   const [secretKey, setSecretKey] = useState("");
   const navigate = useNavigate();
   const formRef = useRef(null);

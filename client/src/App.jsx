@@ -19,6 +19,7 @@ import BloodTest from './components/BloodTest/BloodTest'
 import VerifyOtp from './components/VerifyOtp/VerifyOtp'
 import ConfirmPassword from './components/ConfirmPassword/ConfirmPassword'
 import Termsandcond from './components/Termsandcondition/Termsandcond'
+import NotFoundPage from './components/NotFound/NotFoundPage'
 
 
 // import Hero from './components/Hero/Hero'
@@ -42,6 +43,7 @@ function App() {
       <Route path="/donate-blood" element={<Doner/>}></Route>
       <Route path="/blood-test" element={<BloodTest/>}></Route>
       </Route>
+      <Route component={NotFoundPage} />
       <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
       <Route path='/verifyotp' element={<VerifyOtp/>}></Route>
       <Route path='/confirm' element={<ConfirmPassword/>}></Route>
