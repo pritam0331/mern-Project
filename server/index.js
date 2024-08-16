@@ -125,16 +125,11 @@ app.post('/bloodacc', async (req, res) => {
     }
     console.log(responseMessage)
     res.status(200).send({ message: responseMessage });
-        const { bloodtype, bloodneed, fname, lname, dob, gender, phoneno, email } = req.body;
-        const fullname = { fname, lname };
-        const newBloodAcc = new BloodAcc({ bloodtype, bloodneed, fullname, dob, gender, phoneno, email });
-        await newBloodAcc.save();
-        res.status(201).json({ message: 'Blood acceptor data saved successfully' });
     } catch (error) {
-        console.log(chalk.inverse.red('Error saving blood acceptor data:', error));
-        res.status(500).json({ message: 'Error occurred while saving data' });
+        console.log(chalk.inverse.red(error))
+        res.status(500).send({ message: 'Error occurred while saving data' })
     }
-});
+})
 
 app.post('/blooddon', async (req, res) => {
     try {

@@ -140,7 +140,7 @@ function SignupSignin() {
         <h1>Create Account</h1>
         <div>
           Register As
-          <input type="radio" name="role" value="user" onChange={(e) => setRole(e.target.value)} required />User
+          <input type="radio" name="role" value="user" select onChange={(e) => setRole(e.target.value)} required />User
           <input type="radio" name="role" value="admin" onChange={(e) => setRole(e.target.value)} required />Admin
         </div>
         {role === "admin" ? (

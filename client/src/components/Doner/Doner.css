@@ -45,6 +45,7 @@
 
 .radio-group-doner > div {
     display: flex;
+    accent-color: red;
     gap: 20px;
     flex-wrap: wrap;
 }
@@ -66,6 +67,7 @@
 .option-doner {
     display: flex;
     align-items: center;
+    accent-color: red;
     flex: 1 1 calc(50% - 10px);
     margin-bottom: 10px;
 }
@@ -83,6 +85,7 @@
 
 .gender-options-doner {
     display: flex;
+    accent-color: red;
     gap: 20px;
     flex-wrap: wrap;
     margin-bottom: 20px;
