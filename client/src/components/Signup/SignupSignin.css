@@ -71,6 +71,7 @@
   
   .terms-container input[type="checkbox"] {
 	margin-right: 0.5rem;
+	accent-color:red
   }
   
   .terms-container label {
@@ -117,7 +118,15 @@
 	margin-top: -0.5rem;
 	margin-bottom: 0.5rem;
   }
-  
+  .register {
+	padding-bottom: 1.5rem;
+	display: flex;
+	align-items: center;
+	gap: 8px; 
+	  }
+  .register input[type="radio"] {
+		accent-color: red;
+	  }
   @media (max-width: 480px) {
 	
 	.signup-form  {
