@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import './Doner.css';
+import "./Doner.css";
+
 
 function Doner() {
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
   const [dob, setDob] = useState('');
   const [bloodtype, setBloodType] = useState('');
-  const [blooddonate, setBloodDonate] = useState('1');
+  const [blooddonate, setBloodDonate] = useState("1");
   const [donated, setDonated] = useState(null);
   const [gender, setGender] = useState('');
   const [contact, setContact] = useState('');
@@ -52,7 +53,7 @@ function Doner() {
     }
   };
 
-  const bloodTypes = ['O Rh+', 'O Rh-', 'A Rh+', 'A Rh-', 'B Rh+', 'B Rh-', 'AB Rh+', 'AB Rh-'];
+  const bloodTypes = ['O +', 'O -', 'A +', 'A -', 'B +', 'B -', 'AB +', 'AB -'];
 
   return (
     <div>
@@ -91,73 +92,36 @@ function Doner() {
               value={blooddonate}
               onChange={(e) => setBloodDonate(e.target.value)}
             >
-              {[1,2,3].map((num) => (
+              {[1, 2, 3].map((num) => (
                 <option key={num} value={num}>{num}</option>
               ))}
             </select>
           </div>
 
-          <label htmlFor="first-name" className="name-label">Name:</label>
-          <div className="name-field-doner">
-            <input 
-              type="text" 
-              id="first-name" 
-              name="first-name" 
-              placeholder="First" 
-              className="text-doner" 
-              value={fname} 
-              onChange={(e) => setFname(e.target.value)}
-            />
-            <input 
-              type="text" 
-              id="last-name" 
-              name="last-name" 
-              placeholder="Last" 
-              className="text-doner" 
-              value={lname} 
-              onChange={(e) => setLname(e.target.value)}
-            />
-          </div>
-          <div className="errors">
-            {errors.fname && <span className="error2">{errors.fname}</span>}
-            {errors.lname && <span className="error2">{errors.lname}</span>}
+          <label htmlFor="first-name">Name:</label>
+          <div>
+            <div className="name-field-doner">
+              <input type="text" id="first-name" name="first-name" placeholder="First" className="text-doner" value={fname} onChange={(e) => setFname(e.target.value)} />
+              <input type="text" id="last-name" name="last-name" placeholder="Last" className="text-doner" value={lname} onChange={(e) => setLname(e.target.value)} />
+            </div>
+            <div className='errors'>
+              {errors.fname && <span className="error2">{errors.fname}</span>}
+              {errors.lname && <span className="error2">{errors.lname}</span>}
+            </div>
           </div>
 
-          <label htmlFor="dob" className="dob-label">Date of Birth:</label>
-          <input 
-            type="date" 
-            id="dob" 
-            name="dob" 
-            className="date-doner" 
-            value={dob} 
-            onChange={(e) => setDob(e.target.value)}
-          />
+          <label htmlFor="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY" className="date-doner" value={dob} onChange={(e) => setDob(e.target.value)} />
           {errors.dob && <span className="error">{errors.dob}</span>}
-          
-          <label htmlFor="phone" className="phone-label">Phone number:</label>
-          <input 
-            type="tel" 
-            id="phone" 
-            name="phone" 
-            placeholder="xxxxx-xxxxx" 
-            className="tel-doner" 
-            value={contact} 
-            onChange={(e) => setContact(e.target.value)}
-          />
+
+          <label htmlFor="phone">Phone number:</label>
+          <input type="tel" id="phone" name="phone" placeholder="xxxxx-xxxxx" className="tel-doner" value={contact} onChange={(e) => setContact(e.target.value)} />
           {errors.contact && <span className="error">{errors.contact}</span>}
-          
-          <label htmlFor="email" className="email-label">Email address:</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            placeholder="Email address" 
-            className="email-doner" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)}
-          />
+
+          <label htmlFor="email">Email address:</label>
+          <input type="email" id="email" name="email" placeholder="Email address" className="email-doner" value={email} onChange={(e) => setEmail(e.target.value)} />
           {errors.email && <span className="error">{errors.email}</span>}
-          
+
           <legend className="legend-doner">Gender</legend>
           <div className="gender-options-doner">
             {['Male', 'Female'].map((genderOption) => (
@@ -176,8 +140,7 @@ function Doner() {
             ))}
           </div>
           {errors.gender && <span className="error">{errors.gender}</span>}
-          
-          <label className="prev-doner">Have you donated previously?</label>
+          <label className='prev-doner'>Have you donated previously?</label>
           <div className="radio-group-doner">
             {['Yes', 'No'].map((option) => (
               <div key={option}>
@@ -194,8 +157,7 @@ function Doner() {
             ))}
           </div>
           {errors.donated && <span className="error">{errors.donated}</span>}
-          
-          <div className="submitt-doner">
+          <div className='submitt-doner'>
             <input type="submit" className="submit-doner" />
           </div>
         </form>
