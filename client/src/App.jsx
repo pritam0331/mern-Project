@@ -43,7 +43,7 @@ function App() {
       <Route path="/donate-blood" element={<Doner/>}></Route>
       <Route path="/blood-test" element={<BloodTest/>}></Route>
       </Route>
-      <Route component={NotFoundPage} />
+      <Route path='/*' element={<NotFoundPage/>} />
       <Route path='/forgetpass' element={<ForgetPassword/>}></Route>
       <Route path='/verifyotp' element={<VerifyOtp/>}></Route>
       <Route path='/confirm' element={<ConfirmPassword/>}></Route>
