@@ -61,7 +61,7 @@ function BloodAcceptor() {
         <div className="form-group1">
           <label className='label'>What type of blood do you need?</label>
           <div className="radio-group">
-            {['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'].map((type) => (
+            {['O +', 'O -', 'A +', 'A -', 'B +', 'B -', 'AB +', 'AB -'].map((type) => (
               <label key={type}>
                 <input
                   type="radio"
