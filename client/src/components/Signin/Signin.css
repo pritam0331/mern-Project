@@ -130,7 +130,7 @@ h1 {
 
 .toggle-password {
   position: absolute;
-  top: 37%;
+  top: 35%;
   right: 10px;
   transform: translateY(-50%);
   background: #f8f8f8;
@@ -142,7 +142,7 @@ h1 {
 
 .toggle-password svg {
   width: 20px;
-  height: 20px;
+  height: 15px;
   color: grey; /* Adjust to match the color in the image */
 }
 

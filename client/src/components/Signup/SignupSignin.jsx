@@ -6,6 +6,7 @@ import './SignupSignin.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function SignupSignin() {
   const [user, setUser] = useState(null);
@@ -17,6 +18,7 @@ function SignupSignin() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [role, setRole] = useState("user");
   const [secretKey, setSecretKey] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const formRef = useRef(null);
 
@@ -183,15 +185,23 @@ function SignupSignin() {
           onChange={(e) => setEmail(e.target.value)}
         />
         {errors.email && <p className="error-message">{errors.email}</p>}
-        <input 
-          type="password" 
-          name="password" 
-          placeholder="Password" 
-          className="input-field1" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {errors.password && <p className="error-message">{errors.password}</p>}
+        <div className="password-input-container">
+            <input
+              type={showPassword ? "text" : "password"}
+              className={`input-field ${errors.password ? 'error' : ''}`}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+            {errors.password && <div className="error-message1">{errors.password}</div>}
+          </div>
         <div className="terms-container">
           <input 
             type="checkbox" 
