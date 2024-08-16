@@ -1,20 +1,3 @@
-const express = require('express');
-const app = express();
-const port = 2003;
-const chalk = require('chalk');
-require('./config/dbConn');
-const User = require('./config/User');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const BloodAcc = require('./config/BloodAccepter');
-const BloodDonor = require('./config/BloodDonor');
-const BloodTest = require('./config/BloodTest');
-const Contact = require('./config/Contact');
-const nodemailer = require('nodemailer');
-
-app.use(cors());
-app.use(express.json());
-app.use(bodyParser.json());
 const express = require('express')
 const app = express()
 const port = 3001
@@ -29,6 +12,7 @@ const BloodTest = require('./config/BloodTest')
 const google = require('./config/LoginWithGoogle')
 const adminRoute = require('./router/admin-router')
 const Contact = require('./config/Contact')
+const nodemailer = require('nodemailer');
 // const bcrypt = require('bcrypt')
 
 app.use("/api/admin", adminRoute);
@@ -59,7 +43,7 @@ app.post('/', async (req, res) => {
     const { name, email, password, role } = req.body;
 
     try {
-        const newUser = new User({ name, email, password, role });
+        const newUser = new user({ name, email, password, role });
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (error) {
@@ -72,7 +56,7 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ email });
+        const user = await user.findOne({ email });
         if (user) {
             if (user.password === password) {
                 res.status(200).send('success');
@@ -194,18 +178,11 @@ Rakt Daan Team`
 
 app.post('/api/google-login', async (req, res) => {
     const { googleId, email, name, profilePic } = req.body;
-    try {
-        let user = await User.findOne({ googleId });
-        if (!user) {
-            user = new User({ googleId, email, name, profilePic });
-            await user.save();
-        }
-        res.status(200).json(user);
-    } catch (error) {
-        console.log(chalk.inverse.red('Error during Google login:', error));
-        res.status(500).json({ message: 'Error occurred during Google login' });
+    let user = await google.findOne({ googleId });
+    if (!user) {
+      user = new google({ googleId, email, name, profilePic });
+      await user.save();
     }
-});
     res.status(200).json(user);
   });
 

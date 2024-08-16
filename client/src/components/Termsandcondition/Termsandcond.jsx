@@ -50,7 +50,7 @@ const Termsandcond = () => {
 
       <div className="terms-section"><br></br>
         <h2>7. Contact Information</h2>
-        <p>If you have any questions or concerns, please contact us at <a href="mailto:support@raktdaan.com">support@raktdaan.com</a>.</p>
+        <p>If you have any questions or concerns, please contact us at <a href="mailto:support@raaktdaann.com">support@raaktdaann.com</a>.</p>
       </div>
     </div>
   );

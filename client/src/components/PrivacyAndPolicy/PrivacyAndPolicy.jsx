@@ -77,7 +77,7 @@ function PrivacyAndPolicy() {
         </p>
         <p>Email:</p>
         <div className='support'>
-            <p className='support'>support@raktdaan.com</p>
+            <p className='support'>support@raaktdaann.com</p>
             </div>
       </section>
     </div>

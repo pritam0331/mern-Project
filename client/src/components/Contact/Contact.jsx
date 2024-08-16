@@ -34,7 +34,7 @@ function Contact() {
     const { firstname, lastname, email, phoneNumber, message } = formData;
 
     try {
-      const response = await fetch('http://localhost:2003/contact', {
+      const response = await fetch('http://localhost:3001/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ function Contact() {
         <address>
           <p><FaMapMarkerAlt /> Rohini Sector-5, <br />North Delhi 110085</p>
           <p><FaPhoneAlt /> Phone: 011 3345 5478</p>
-          <p><FaEnvelope /> RaaktDaann@gmail.com </p>
+          <p><FaEnvelope /> raaktdaann@gmail.com </p>
         </address>
       </div>
       <div className="contact-form" data-aos="fade-left">
