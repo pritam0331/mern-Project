@@ -138,10 +138,11 @@ function SignupSignin() {
     <div className="signup-signin-container" data-aos="zoom-in">
       <form ref={formRef} onSubmit={handleSubmit} className='signup-form'>
         <h1>Create Account</h1>
-        <div>
-          Register As
-          <input type="radio" name="role" value="user" select onChange={(e) => setRole(e.target.value)} required />User
-          <input type="radio" name="role" value="admin" onChange={(e) => setRole(e.target.value)} required />Admin
+        <div className='register'>
+          Register As &nbsp;
+          <input type="radio" name="role" value="user" selected onChange={(e) => setRole(e.target.value)} required />User
+          <input type="radio" name="role" value="admin" onChange={(e) => setRole(e.target.value)} required />&nbsp;Admin
+
         </div>
         {role === "admin" ? (
           <input 
