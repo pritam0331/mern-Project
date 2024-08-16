@@ -70,7 +70,7 @@ function Contact() {
       <div className="contact-info" data-aos="fade-right">
         <h2>Get in touch with us</h2>
         <p>
-          We Rakt Daan are a charitable and non-profit organization. We provide
+          We provide
           the service of collecting blood and donating it to needy patients who
           are fighting for their lives. We encourage young blood donors and
           provide the certificate of "Veer Jaan."
